@@ -1,0 +1,11 @@
+PORTAFOLIO PATO PRODUCTIONS - COMO SUBIRLO GRATIS
+
+1. Entra a https://app.netlify.com/drop (crea cuenta gratis con tu correo o Google).
+2. Arrastra ESTA CARPETA completa (la que tiene index.html) a la pagina.
+3. En unos segundos te da un link tipo algo.netlify.app. Ese ya es publico.
+4. En "Site configuration > Change site name" ponle un nombre, ej: patoproductions.netlify.app
+5. (Opcional) Si compras un dominio (ej. patoproductions.com, ~12 USD/ano),
+   en "Domain management > Add a domain" lo conectas.
+
+Para actualizar: vuelve a arrastrar la carpeta en la seccion "Deploys" del sitio.
+Aqui los videos de YouTube se reproducen dentro de la pagina; los de Instagram abren Instagram.

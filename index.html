@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portafolio de Daniel “Pato” Palomino: dirección, edición, VFX y color para videos musicales.">
+<link rel="icon" href="logo.png">
+<title>Pato Productions Artistas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+[hidden]{display:none!important}
+img{max-width:100%}
+html{background:#0c0b0a}
+
+/* Layout: una sala de proyección editorial. Nombre en serif de alto contraste, una pieza principal a todo ancho y una grilla sobria donde manda la imagen. */
+:root{
+  --ink:#0c0b0a;        /* fondo: negro cálido de sala */
+  --ink-2:#141210;      /* superficie de los videos */
+  --rule:#2b2722;       /* filetes */
+  --paper:#ede8df;      /* texto principal, blanco hueso */
+  --ash:#8f877c;        /* texto secundario */
+  --brass:#c3a37a;      /* acento: latón apagado */
+  --serif:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --sans:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding-block:56px 72px;display:flex;flex-direction:column;gap:72px}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:1px solid var(--brass);outline-offset:4px}
+.cap{font-family:var(--sans);font-weight:400;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ash)}
+
+/* cabecera */
+.mast{display:flex;flex-direction:column;gap:14px;padding-bottom:36px;border-bottom:1px solid var(--rule)}
+.mast .cap{color:var(--brass)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.6vw,58px);line-height:1.02;letter-spacing:-.01em;margin:6px 0 0;text-wrap:balance}
+h1 em{font-style:italic;font-weight:400}
+.disc{font-family:var(--sans);font-size:15px;color:var(--ash);margin:0;max-width:52ch}
+
+/* barra de filtros */
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;align-items:baseline}
+.tabs{display:flex;flex-wrap:wrap;gap:6px 22px}
+.tabs button{background:none;border:0;padding:4px 0;cursor:pointer;font:400 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--ash);border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.tabs button:hover{color:var(--paper)}
+.tabs button[aria-pressed="true"]{color:var(--paper);border-bottom-color:var(--brass)}
+
+/* grilla */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:56px 32px}
+.piece{display:flex;flex-direction:column;gap:16px;min-width:0}
+.piece.feature{grid-column:1/-1}
+.screen{position:relative;display:block;aspect-ratio:16/9;max-width:100%;overflow:hidden;background:var(--ink-2)}
+.screen video,.screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .6s}
+.screen video{filter:saturate(.92)}
+a.screen:hover video{transform:scale(1.025);filter:saturate(1.05)}
+.screen .open{position:absolute;right:14px;bottom:12px;font:400 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--paper);opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+a.screen:hover .open,a.screen:focus-visible .open{opacity:1;transform:none}
+.meta{display:grid;grid-template-columns:1fr auto;gap:4px 20px;align-items:baseline}
+h2{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(26px,2.6vw,32px);line-height:1.05;margin:0;text-wrap:balance}
+.feature h2{font-size:clamp(34px,4.4vw,56px)}
+.date{font-family:var(--mono);font-size:11px;color:var(--ash);letter-spacing:.04em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.artist{grid-column:1/-1;margin:0;color:var(--ash);font-size:14px}
+.roles{grid-column:1/-1;margin:6px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 0}
+.roles li{font:400 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--paper)}
+.roles li+li::before{content:"·";color:var(--brass);margin:0 10px}
+.roles li.dir{color:var(--brass)}
+
+/* sección edits */
+.sec{display:flex;flex-direction:column;gap:40px;border-top:1px solid var(--rule);padding-top:56px}
+.sec h3{font-family:var(--serif);font-weight:400;font-size:clamp(44px,7vw,92px);line-height:.9;letter-spacing:-.015em;margin:14px 0 0}
+.sec h3 em{font-style:italic}
+.sec p{font-family:var(--serif);font-style:italic;color:var(--ash);font-size:18px;margin:16px 0 0;max-width:46ch}
+
+footer{border-top:1px solid var(--rule);padding-top:40px;display:grid;grid-template-columns:1fr auto;gap:24px 48px;align-items:end}
+.brand{display:flex;align-items:center;gap:16px}
+.brand img{width:56px;height:auto;display:block}
+.sign{display:flex;align-items:center;gap:22px}
+.sign img{width:88px;height:auto;display:block}
+footer h4{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(36px,5vw,64px);line-height:1;margin:0}
+.contact{display:flex;flex-wrap:wrap;gap:16px 40px}
+.contact div{display:flex;flex-direction:column;gap:4px}
+.contact span{font-family:var(--serif);font-size:20px;user-select:all}
+
+@media (max-width:640px){.mast,footer{grid-template-columns:1fr}@media (prefers-reduced-motion:reduce){.screen video{display:none}.screen video,.screen img,.open{transition:none}}
+</style>
+
+<style>
+.lb{position:fixed;inset:0;z-index:50;background:rgba(8,7,6,.92);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+.lb-box{width:min(1200px,100%);aspect-ratio:16/9;background:#000}
+.lb-box iframe{width:100%;height:100%;border:0;display:block}
+.lb-close{position:absolute;top:max(16px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));background:none;border:0;color:var(--paper);font:400 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;cursor:pointer;padding:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <div class="brand"><img src="logo-white.png" alt="Logo de Pato Productions" width="56" height="56"><div class="cap">Pato Productions — Medellín</div></div>
+    <h1>Videos musicales <em>&amp;</em> edits</h1>
+    <p class="disc">Dirección, edición, efectos visuales y color para la música urbana.</p>
+  </header>
+
+  <div class="bar">
+    <div class="tabs" role="group" aria-label="Filtrar por rol">
+      <button type="button" id="f-all" data-f="all" aria-pressed="true">Todo</button>
+      <button type="button" id="f-dir" data-f="dir" aria-pressed="false">Dirección</button>
+      <button type="button" id="f-edit" data-f="edit" aria-pressed="false">Edición</button>
+      <button type="button" id="f-vfx" data-f="vfx" aria-pressed="false">VFX</button>
+      <button type="button" id="f-color" data-f="color" aria-pressed="false">Color</button>
+      <button type="button" id="f-mon" data-f="mon" aria-pressed="false">Montaje</button>
+    </div>
+    <div class="tabs" role="group" aria-label="Ordenar">
+      <button type="button" id="s-best" data-s="best" aria-pressed="true">Selección</button>
+      <button type="button" id="s-new" data-s="new" aria-pressed="false">Recientes</button>
+    </div>
+  </div>
+
+  <main class="grid" id="grid"></main>
+
+  <section class="sec">
+    <div>
+      <div class="cap">Proyectos personales</div>
+      <h3>Fan <em>edits</em></h3>
+      <p>Piezas propias sobre anime, cine y series, hechas con material de terceros.</p>
+    </div>
+    <div class="grid" id="grid-edits"></div>
+  </section>
+
+  <footer>
+    <div class="sign"><img src="logo.png" alt="" width="88" height="96"><h4>Trabajemos juntos</h4></div>
+    <div class="contact">
+      <div><span class="cap">Instagram</span><span>@patomino05</span></div>
+      <div><span class="cap">Correo</span><span>franquear3@gmail.com</span></div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const P = [
+ {n:"02",id:"ZyucuESvRqo",d:"2025-02-16",t:"Polvo Pending",a:"PRIMO, Bunlo, Yovng Maelo",r:["vfx"],feat:1},
+ {n:"20",id:"nRSa_9gu7r0",d:"2026-07-23",t:"ENMED Session #8",a:"Juan One · Evisu",r:["mon"]},
+ {n:"06",id:"0YvmprlLDZ4",d:"2026-02-05",t:"M&M",a:"Quake55 x Zay",r:["dir","edit","vfx","color"]},
+ {n:"09",id:"JHwlblLC6lY",d:"2026-02-20",t:"Gloss",a:"Andino · Film by Haski",r:["vfx"]},
+ {n:"10",id:"qVjXAmh6Wqg",d:"2026-04-03",t:"GODST☆R",a:"XkarleX",r:["edit","vfx"]},
+ {n:"18",id:"hcJ1Tnll-3M",d:"2025-07-03",t:"Patinando en SZ",a:"Big G",r:["dir","edit","vfx","color"]},
+ {n:"14",id:"ikksBaT8Um4",d:"2024-10-25",t:"Pool",a:"Isma, Icee Fran, Martelo",r:["edit","vfx"]},
+ {n:"01",id:"fx11USX2IJU",d:"2025-05-07",t:"Tu Fan",a:"RAFIK",r:["edit","vfx","color"]},
+ {n:"04",id:"VYNpXzVLcEk",d:"2024-11-29",t:"Josear Pa Verte",a:"YOVNGSAVAG3",r:["dir","edit","vfx","color"]},
+ {n:"13",id:"Vjtgr6UYLb8",d:"2026-08-29",t:"Maldito",a:"XkarleX · EP 78-7",r:["vfx"]},
+ {n:"15",id:"tIvrZzd5OSQ",d:"2024-10-13",t:"Sorry x Llamar",a:"Shago",r:["vfx"]},
+ {n:"05",id:"LzsLM_tdw_Y",d:"2026-04-07",t:"La City",a:"Maicol La M, Oplus, El H, Piri Blackboy",r:["vfx"]},
+ {n:"12",id:"9XP_nnNs_JM",d:"2026-08-29",t:"Estas Groupies",a:"XkarleX · EP 78-7",r:["vfx"]},
+ {n:"07",id:"luffesj58uA",d:"2025-04-13",t:"La BellaKiTa",a:"Payne Mami",r:["dir","edit","vfx","color"]},
+ {n:"21",id:"0uP0ZPW5AvM",d:"2026-01-30",t:"Ay Ma",a:"Bryanco",r:["mon"]},
+ {n:"03",id:"V3TvaHJelto",d:"2026-01-05",t:"Suerte",a:"Quake55 x Zay",r:["dir"]},
+ {n:"11",id:"HDEWUDz30nk",d:"2026-08-29",t:"Delicatés",a:"XkarleX · EP 78-7",r:["vfx"]},
+ {n:"22",id:"_P6_Sitk_pc",d:"2025-02-14",t:"G Love",a:"Kidd Anyel",r:["dir","edit","vfx","color"]},
+ {n:"19",id:"cf4FZacLbkM",d:"2025-09-11",t:"Obvio Mani",a:"Big G · visualizer",r:["dir","edit","vfx"]},
+ {n:"08",id:"nWQl5w921K0",d:"2025-01-30",t:"Griselda Blanco",a:"Jaygee · video lyric",r:["edit","vfx"]},
+ {n:"16",id:"5gMzT2bn_bU",d:"2022-06-29",t:"De la noche a la mañana",a:"Aspenwapp",r:["cam"]},
+ {n:"17",id:"jmXEns8YBGI",d:"2026-09-05",t:"BTS Safari",a:"Fariana",r:["edit"]}
+];
+const E = [
+ {n:"e1",ig:"DfQsXjnB3Yu",d:"2026-11-02",t:"Black Clover",a:"Somewhere I Belong",r:["edit","vfx"],feat:1},
+ {n:"e6",ig:"DfVtTUVOaBL",d:"2026-11-04",t:"Chihiro",a:"Visualizer lofi · TouchDesigner",r:["edit","vfx"]},
+ {n:"e2",ig:"DfI7AukRqwo",d:"2026-10-30",t:"Death Note",a:"An Ending In Itself",r:["edit","vfx"]},
+ {n:"e4",ig:"DfDrrroSyQc",d:"2026-10-28",t:"What Is Love",a:"Anime",r:["edit","vfx"]},
+ {n:"e3",ig:"Deu4P9uh7Rb",d:"2026-10-20",t:"Estuve pensándote II",a:"Breaking Bad · Beleuve",r:["edit","vfx"]},
+ {n:"e7",ig:"DerYRsJRwQy",d:"2026-10-19",t:"Estuve pensándote I",a:"Breaking Bad · Beleuve · versión 3D",r:["edit","vfx"]}
+];
+
+const MES=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const fmt=d=>{const [y,m]=d.split("-");return `${MES[+m-1]} ${y}`;};
+const RL={dir:"Dirección",edit:"Edición",vfx:"VFX",color:"Color",mon:"Montaje",cam:"Segunda cámara"};
+const render=list=>list.map(p=>{
+  const url=p.id?"https://www.youtube.com/watch?v="+p.id:(p.ig?"https://www.instagram.com/p/"+p.ig+"/":"");
+  const where=p.id?"Reproducir":"Ver en Instagram";
+  const media=`<video src="clips/${p.n}.mp4" poster="clips/${p.n}.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>`;
+  return `<article class="piece${p.feat?" feature":""}" data-r="${p.r.join(" ")}" data-d="${p.d}">
+    <a class="screen" href="${url}" target="_blank" rel="noopener" aria-label="${p.t}, ${where}">${media}<span class="open">${where} ↗</span></a>
+    <div class="meta">
+      <h2>${p.t}</h2><span class="date">${fmt(p.d)}</span>
+      <p class="artist">${p.a}</p>
+      <ul class="roles">${p.r.map(r=>`<li class="${r}">${RL[r]}</li>`).join("")}</ul>
+    </div>
+  </article>`;}).join("");
+document.getElementById("grid").innerHTML=render(P);
+document.getElementById("grid-edits").innerHTML=render(E);
+document.querySelectorAll(".grid").forEach(g=>[...g.children].forEach((el,i)=>{el.dataset.i=i;}));
+
+document.querySelectorAll("[data-f]").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll("[data-f]").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  const f=b.dataset.f;
+  document.querySelectorAll(".piece").forEach(el=>{el.hidden=f!=="all"&&!el.dataset.r.split(" ").includes(f);});
+}));
+document.querySelectorAll("[data-s]").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll("[data-s]").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  const byDate=b.dataset.s==="new";
+  document.querySelectorAll(".grid").forEach(g=>{
+    [...g.children].sort((x,y)=>byDate?y.dataset.d.localeCompare(x.dataset.d):x.dataset.i-y.dataset.i)
+      .forEach(el=>{el.classList.toggle("feature",!byDate&&el.dataset.i==="0");g.appendChild(el);});
+  });
+}));
+
+/* solo se reproducen los loops visibles, para que la página no pese */
+const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){const pr=v.play();if(pr)pr.catch(()=>{});}else v.pause();}),{threshold:.25});
+document.querySelectorAll(".screen video").forEach(v=>io.observe(v));
+
+const lb=document.createElement("div");lb.className="lb";lb.hidden=true;
+lb.innerHTML='<button class="lb-close" type="button">Cerrar ✕</button><div class="lb-box"></div>';
+document.body.appendChild(lb);
+const closeLb=()=>{lb.hidden=true;lb.querySelector(".lb-box").innerHTML="";};
+lb.addEventListener("click",e=>{if(e.target===lb||e.target.classList.contains("lb-close"))closeLb();});
+addEventListener("keydown",e=>{if(e.key==="Escape")closeLb();});
+document.addEventListener("click",e=>{
+  const a=e.target.closest("a.screen");if(!a)return;
+  const m=a.href.match(/watch\?v=([\w-]+)/);if(!m)return;
+  e.preventDefault();
+  lb.querySelector(".lb-box").innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Video"></iframe>`;
+  lb.hidden=false;
+});
+</script>
+
+</body>
+</html>
