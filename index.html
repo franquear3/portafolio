@@ -259,7 +259,7 @@ document.querySelectorAll("[data-s]").forEach(b=>b.addEventListener("click",()=>
 /* antesala: #musica o #youtube; sin hash se muestra la puerta de entrada */
 const TXT={hall:["Edición <em>&amp;</em> dirección","Escoge qué quieres ver."],
   musica:["Videos musicales <em>&amp;</em> edits","Dirección, edición, efectos visuales y color para la música urbana."],
-  youtube:["Edición para <em>YouTube</em>","Videos e intros de Roblox para canales infantiles: avatares PNGtuber, subtítulos animados, memes y SFX al ritmo del gameplay."]};
+  youtube:["Edición para <em>YouTube</em>","Edición, motion graphics y subtítulos animados para creadores de contenido."]};
 const route=()=>{
   const v=location.hash==="#musica"?"musica":location.hash==="#youtube"?"youtube":"hall";
   document.querySelectorAll("[data-view]").forEach(el=>{el.hidden=el.dataset.view!==v;});
