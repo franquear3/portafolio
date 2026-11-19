@@ -215,7 +215,7 @@ const P = [
  {n:"22",id:"_P6_Sitk_pc",d:"2025-02-14",t:"G Love",a:"Kidd Anyel",r:["dir","edit","vfx","color"]},
  {n:"19",id:"cf4FZacLbkM",d:"2025-09-11",t:"Obvio Mani",a:"Big G · visualizer",r:["dir","edit","vfx"]},
  {n:"08",id:"nWQl5w921K0",d:"2025-01-30",t:"Griselda Blanco",a:"Jaygee · video lyric",r:["edit","vfx"]},
- {n:"gl",id:"667Dh74uz70",d:"2025-06-01",t:"Ghetto Love",a:"",r:["mon"],noclip:1},
+ {n:"gl",id:"667Dh74uz70",d:"2025-06-01",t:"Ghetto Love",a:"Teo Enviguetto",r:["mon"],noclip:1},
  {n:"16",id:"5gMzT2bn_bU",d:"2022-06-29",t:"De la noche a la mañana",a:"Aspenwapp",r:["cam"]}
 ];
 const E = [
@@ -244,8 +244,8 @@ const BH = [
  {n:"bt",id:"lTs8BCdVcco",d:"2026-05-08",t:"Terridata",a:"Pitch institucional · aprobado en 2 alcaldías",r:["edit","motion"],yt:1,noclip:1,feat:1}
 ];
 const B = [
- {n:"b-cm01",id:"XCLwQFo5YhE",d:"2025-07-31",t:"Colombiamoda",a:"Reel de pasarela y ciudad",r:["edit","color"]},
- {n:"b-cm02",id:"zDBJFaRoX9M",d:"2025-08-01",t:"Colombiamoda",a:"Reel de moda",r:["edit","color"]},
+ {n:"b-cm01",id:"XCLwQFo5YhE",ext:1,d:"2025-07-31",t:"Colombiamoda",a:"Reel de pasarela y ciudad",r:["edit","color"]},
+ {n:"b-cm02",id:"zDBJFaRoX9M",ext:1,d:"2025-08-01",t:"Colombiamoda",a:"Reel de moda",r:["edit","color"]},
  {n:"b-dc02",id:"9sucRBa9rT4",d:"2026-11-10",t:"Don Chinga",a:"Restaurante mexicano · reel",r:["edit"]},
  {n:"b-dc03",id:"0PP-zBszokE",d:"2026-11-16",t:"Don Chinga",a:"Restaurante mexicano · reel",r:["edit"]},
  {n:"b-esc",ig:"DRS8K0mkZkB",vis:"142 mil",d:"2025-11-20",t:"Dr. Escorcia",a:"Cirugía estética · lipopapada",r:["edit"]},
@@ -258,7 +258,7 @@ const B = [
 const MES=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
 const fmt=d=>{const [y,m]=d.split("-");return `${MES[+m-1]} ${y}`;};
 const RL={dir:"Dirección",edit:"Edición",vfx:"VFX",color:"Color",mon:"Montaje",cam:"Segunda cámara",motion:"Motion graphics"};
-const card=(p,url,where,media)=>`<article class="piece${p.feat?" feature":""}${p.yt?" yt":""}" data-r="${p.r.join(" ")}" data-d="${p.d}">
+const card=(p,url,where,media)=>`<article data-ext="${p.ext?1:""}" class="piece${p.feat?" feature":""}${p.yt?" yt":""}" data-r="${p.r.join(" ")}" data-d="${p.d}">
     ${url?`<a class="screen" href="${url}" target="_blank" rel="noopener" aria-label="${p.t}, ${where}">${media}<span class="open">${where} ↗</span></a>`:`<div class="screen">${media}</div>`}
     <div class="meta">
       <h2>${p.t}</h2><span class="date">${fmt(p.d)}</span>
@@ -268,7 +268,7 @@ const card=(p,url,where,media)=>`<article class="piece${p.feat?" feature":""}${p
   </article>`;
 const render=list=>list.filter(p=>!p.noclip||p.id).map(p=>{
   const url=p.id?"https://www.youtube.com/watch?v="+p.id:(p.v||(p.ig?"https://www.instagram.com/p/"+p.ig+"/":""));
-  const where=p.ig&&!p.id?"Ver en Instagram":"Reproducir";
+  const where=p.ig&&!p.id?"Ver en Instagram":p.ext?"Ver en YouTube":"Reproducir";
   if(p.vis) return card(p,url,where,`<div class="stat"><b>${p.vis}</b><small>vistas en Instagram</small></div>`);
   const thumb=p.id?`<img src="https://i.ytimg.com/vi/${p.id}/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/${p.id}/hqdefault.jpg'" alt="" loading="lazy">`:"";
   if(p.yt&&p.id) return card(p,url,where,thumb+(p.noclip?"":`<video class="hov" src="clips/${p.n}.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>`));
@@ -325,6 +325,7 @@ lb.addEventListener("click",e=>{if(e.target===lb||e.target.classList.contains("l
 addEventListener("keydown",e=>{if(e.key==="Escape")closeLb();});
 document.addEventListener("click",e=>{
   const a=e.target.closest("a.screen");if(!a)return;
+  if(a.closest("article").dataset.ext)return;
   const m=a.href.match(/watch\?v=([\w-]+)/);const local=/\.mp4$/.test(a.getAttribute("href"));if(!m&&!local)return;
   e.preventDefault();
   lb.querySelector(".lb-box").innerHTML=m?`<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Video"></iframe>`
