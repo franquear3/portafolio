@@ -196,8 +196,7 @@ const P = [
  {n:"22",id:"_P6_Sitk_pc",d:"2025-02-14",t:"G Love",a:"Kidd Anyel",r:["dir","edit","vfx","color"]},
  {n:"19",id:"cf4FZacLbkM",d:"2025-09-11",t:"Obvio Mani",a:"Big G · visualizer",r:["dir","edit","vfx"]},
  {n:"08",id:"nWQl5w921K0",d:"2025-01-30",t:"Griselda Blanco",a:"Jaygee · video lyric",r:["edit","vfx"]},
- {n:"16",id:"5gMzT2bn_bU",d:"2022-06-29",t:"De la noche a la mañana",a:"Aspenwapp",r:["cam"]},
- {n:"17",id:"jmXEns8YBGI",d:"2026-09-05",t:"BTS Safari",a:"Fariana",r:["edit"]}
+ {n:"16",id:"5gMzT2bn_bU",d:"2022-06-29",t:"De la noche a la mañana",a:"Aspenwapp",r:["cam"]}
 ];
 const E = [
  {n:"e1",ig:"DfQsXjnB3Yu",d:"2026-11-02",t:"Black Clover",a:"Somewhere I Belong",r:["edit","vfx"],feat:1},
@@ -215,6 +214,7 @@ const Y = [
  {n:"y3",id:"YiMiJBM40EA",d:"2026-11-15",t:"La escuela de anomalías",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1},
  {n:"y4",id:"yW4CHP4vRZo",d:"2026-11-13",t:"Una chica ángel secuestró a Sonic",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1},
  {n:"y2",id:"SNtI6nNtsAU",d:"2026-11-11",t:"No toques el agua",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1},
+ {n:"17",id:"jmXEns8YBGI",d:"2026-09-05",t:"BTS Safari",a:"Detrás de cámara · Fariana",r:["edit"],yt:1},
  {n:"y1",id:"Zu2lcOo9AsQ",d:"2026-11-09",t:"Me convertí en un perro",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1}
 ];
 
@@ -259,7 +259,7 @@ document.querySelectorAll("[data-s]").forEach(b=>b.addEventListener("click",()=>
 /* antesala: #musica o #youtube; sin hash se muestra la puerta de entrada */
 const TXT={hall:["Edición <em>&amp;</em> dirección","Escoge qué quieres ver."],
   musica:["Videos musicales <em>&amp;</em> edits","Dirección, edición, efectos visuales y color para la música urbana."],
-  youtube:["Edición para <em>YouTube</em>","Edición, motion graphics y subtítulos animados para creadores de contenido."]};
+  youtube:["Edición para <em>YouTube</em>","Edición, motion graphics, vlogs y detrás de cámaras para creadores de contenido."]};
 const route=()=>{
   const v=location.hash==="#musica"?"musica":location.hash==="#youtube"?"youtube":"hall";
   document.querySelectorAll("[data-view]").forEach(el=>{el.hidden=el.dataset.view!==v;});
