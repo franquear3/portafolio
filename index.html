@@ -93,18 +93,20 @@ a.screen:hover video.hov,a.screen:focus-visible video.hov{opacity:1}
 
 /* antesala */
 .hall{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px}
-.door{position:relative;display:block;aspect-ratio:4/3;min-width:0;width:100%;overflow:hidden;background:var(--ink-2)}
-.door video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.6);transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .6s}
-.door:hover video,.door:focus-visible video{transform:scale(1.03);filter:saturate(1) brightness(.8)}
-.door::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,11,10,.85),rgba(12,11,10,0) 60%)}
+.door{position:relative;display:block;aspect-ratio:4/5;min-width:0;width:100%;overflow:hidden;background:var(--ink-2)}
+.door video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.78);transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .6s}
+.door:hover video,.door:focus-visible video{transform:scale(1.03);filter:saturate(1) brightness(.92)}
+.door::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,11,10,.9),rgba(12,11,10,.35) 35%,rgba(12,11,10,0) 60%)}
 .door-txt{z-index:1;position:absolute;left:28px;right:28px;bottom:28px;display:flex;flex-direction:column;gap:10px}
 .door-txt .cap{color:var(--brass)}
-.door-t{font-family:var(--serif);font-weight:400;font-size:clamp(44px,6vw,80px);line-height:.95;letter-spacing:-.015em;color:var(--paper)}
+.door-t{font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.4vw,52px);line-height:1;white-space:nowrap;letter-spacing:-.015em;color:var(--paper)}
 .door-t em{font-style:italic}
 .back{color:var(--brass)!important;align-self:flex-start}
 .back:hover{color:var(--paper)!important}
 [data-view="youtube"].sec,[data-view="empresas"].sec{border-top:0;padding-top:0}
-.hall{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.hall{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px}
+.door-txt{left:24px;right:24px;bottom:26px}
+@media (max-width:640px){.door{aspect-ratio:4/3}.hall{gap:16px}}
 /* empresas: reels verticales */
 .grid.vert{grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:48px 24px}
 .vert .screen{aspect-ratio:9/16}
@@ -141,11 +143,11 @@ a.screen:hover .stat b{color:var(--brass)}
       <span class="door-txt"><span class="cap">Dirección · edición · VFX · color</span><span class="door-t">Videos <em>musicales</em></span></span>
     </a>
     <a class="door" href="#youtube">
-      <video src="clips/y6.mp4" poster="clips/y6.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+      <video src="clips/door-yt.mp4" poster="clips/door-yt.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
       <span class="door-txt"><span class="cap">Edición para creadores</span><span class="door-t">You<em>Tube</em></span></span>
     </a>
     <a class="door" href="#empresas">
-      <video src="clips/b-cm01.mp4" poster="clips/b-cm01.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+      <video src="clips/door-emp.mp4" poster="clips/door-emp.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
       <span class="door-txt"><span class="cap">Reels · campañas · institucional</span><span class="door-t">Em<em>presas</em></span></span>
     </a>
   </nav>
