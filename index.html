@@ -90,6 +90,7 @@ footer h4{font-family:var(--serif);font-weight:400;font-style:italic;font-size:c
 <style>
 .lb{position:fixed;inset:0;z-index:50;background:rgba(8,7,6,.92);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
 .lb-box{width:min(1200px,100%);aspect-ratio:16/9;background:#000}
+.lb-box video{width:100%;height:100%;display:block;background:#000}
 .lb-box iframe{width:100%;height:100%;border:0;display:block}
 .lb-close{position:absolute;top:max(16px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));background:none;border:0;color:var(--paper);font:400 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;cursor:pointer;padding:8px}
 </style>
@@ -118,6 +119,15 @@ footer h4{font-family:var(--serif);font-weight:400;font-style:italic;font-size:c
   </div>
 
   <main class="grid" id="grid"></main>
+
+  <section class="sec" id="youtube">
+    <div>
+      <div class="cap">Edición para creadores</div>
+      <h3>You<em>Tube</em></h3>
+      <p>Videos e intros de Roblox para canales infantiles: avatares PNGtuber, subtítulos animados, memes y SFX al ritmo del gameplay.</p>
+    </div>
+    <div class="grid" id="grid-yt"></div>
+  </section>
 
   <section class="sec">
     <div>
@@ -172,15 +182,26 @@ const E = [
  {n:"e7",ig:"DerYRsJRwQy",d:"2026-10-19",t:"Estuve pensándote I",a:"Breaking Bad · Beleuve · versión 3D",r:["edit","vfx"]}
 ];
 
+/* YouTube: id = video de YouTube (vacío hasta tener el link); v = video local que se reproduce en la página; sin clip, la tarjeta usa la miniatura de YouTube */
+const Y = [
+ {n:"y6",id:"",v:"clips/y6-full.mp4",d:"2026-11-18",t:"Intro Roblox",a:"Intro de 20 s para youtuber de Roblox",r:["edit","motion"],feat:1},
+ {n:"y2",id:"",d:"2026-11-10",t:"No salpiques",a:"sameeKG X · Roblox",r:["edit","motion"]},
+ {n:"y3",id:"",v:"clips/y3-full.mp4",d:"2026-11-13",t:"Anomalías en la escuela",a:"sameeKG X · intro narrada + video",r:["edit","motion"]},
+ {n:"y1",id:"",d:"2026-11-09",t:"Doggy Don't Care",a:"sameeKG X · gameplay",r:["edit","motion"]},
+ {n:"y4",id:"",noclip:1,d:"2026-11-12",t:"Chica Ángel",a:"sameeKG X · Roblox",r:["edit","motion"]},
+ {n:"y5",id:"",noclip:1,d:"2026-11-14",t:"Lobos",a:"sameeKG X · Roblox",r:["edit","motion"]}
+];
+
 const MES=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
 const fmt=d=>{const [y,m]=d.split("-");return `${MES[+m-1]} ${y}`;};
-const RL={dir:"Dirección",edit:"Edición",vfx:"VFX",color:"Color",mon:"Montaje",cam:"Segunda cámara"};
-const render=list=>list.map(p=>{
-  const url=p.id?"https://www.youtube.com/watch?v="+p.id:(p.ig?"https://www.instagram.com/p/"+p.ig+"/":"");
-  const where=p.id?"Reproducir":"Ver en Instagram";
-  const media=`<video src="clips/${p.n}.mp4" poster="clips/${p.n}.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>`;
+const RL={dir:"Dirección",edit:"Edición",vfx:"VFX",color:"Color",mon:"Montaje",cam:"Segunda cámara",motion:"Motion graphics"};
+const render=list=>list.filter(p=>!p.noclip||p.id).map(p=>{
+  const url=p.id?"https://www.youtube.com/watch?v="+p.id:(p.v||(p.ig?"https://www.instagram.com/p/"+p.ig+"/":""));
+  const where=p.ig&&!p.id?"Ver en Instagram":"Reproducir";
+  const media=p.noclip?`<img src="https://i.ytimg.com/vi/${p.id}/hqdefault.jpg" alt="" loading="lazy">`
+    :`<video src="clips/${p.n}.mp4" poster="clips/${p.n}.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>`;
   return `<article class="piece${p.feat?" feature":""}" data-r="${p.r.join(" ")}" data-d="${p.d}">
-    <a class="screen" href="${url}" target="_blank" rel="noopener" aria-label="${p.t}, ${where}">${media}<span class="open">${where} ↗</span></a>
+    ${url?`<a class="screen" href="${url}" target="_blank" rel="noopener" aria-label="${p.t}, ${where}">${media}<span class="open">${where} ↗</span></a>`:`<div class="screen">${media}</div>`}
     <div class="meta">
       <h2>${p.t}</h2><span class="date">${fmt(p.d)}</span>
       <p class="artist">${p.a}</p>
@@ -188,6 +209,7 @@ const render=list=>list.map(p=>{
     </div>
   </article>`;}).join("");
 document.getElementById("grid").innerHTML=render(P);
+document.getElementById("grid-yt").innerHTML=render(Y);
 document.getElementById("grid-edits").innerHTML=render(E);
 document.querySelectorAll(".grid").forEach(g=>[...g.children].forEach((el,i)=>{el.dataset.i=i;}));
 
@@ -217,9 +239,10 @@ lb.addEventListener("click",e=>{if(e.target===lb||e.target.classList.contains("l
 addEventListener("keydown",e=>{if(e.key==="Escape")closeLb();});
 document.addEventListener("click",e=>{
   const a=e.target.closest("a.screen");if(!a)return;
-  const m=a.href.match(/watch\?v=([\w-]+)/);if(!m)return;
+  const m=a.href.match(/watch\?v=([\w-]+)/);const local=/\.mp4$/.test(a.getAttribute("href"));if(!m&&!local)return;
   e.preventDefault();
-  lb.querySelector(".lb-box").innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Video"></iframe>`;
+  lb.querySelector(".lb-box").innerHTML=m?`<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Video"></iframe>`
+    :`<video src="${a.getAttribute("href")}" controls autoplay playsinline></video>`;
   lb.hidden=false;
 });
 </script>
