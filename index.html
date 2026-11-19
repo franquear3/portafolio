@@ -84,7 +84,21 @@ footer h4{font-family:var(--serif);font-weight:400;font-style:italic;font-size:c
 .contact div{display:flex;flex-direction:column;gap:4px}
 .contact span{font-family:var(--serif);font-size:20px;user-select:all}
 
-@media (max-width:640px){.mast,footer{grid-template-columns:1fr}@media (prefers-reduced-motion:reduce){.screen video{display:none}.screen video,.screen img,.open{transition:none}}
+@media (max-width:640px){.mast,footer{grid-template-columns:1fr}@media (prefers-reduced-motion:reduce){.screen video{display:none}.screen video,.screen img,.open{transition:none}}}
+
+/* antesala */
+.hall{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px}
+.door{position:relative;display:block;aspect-ratio:4/3;min-width:0;width:100%;overflow:hidden;background:var(--ink-2)}
+.door video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.6);transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .6s}
+.door:hover video,.door:focus-visible video{transform:scale(1.03);filter:saturate(1) brightness(.8)}
+.door::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,11,10,.85),rgba(12,11,10,0) 60%)}
+.door-txt{z-index:1;position:absolute;left:28px;right:28px;bottom:28px;display:flex;flex-direction:column;gap:10px}
+.door-txt .cap{color:var(--brass)}
+.door-t{font-family:var(--serif);font-weight:400;font-size:clamp(44px,6vw,80px);line-height:.95;letter-spacing:-.015em;color:var(--paper)}
+.door-t em{font-style:italic}
+.back{color:var(--brass)!important;align-self:flex-start}
+.back:hover{color:var(--paper)!important}
+[data-view="youtube"].sec{border-top:0;padding-top:0}
 </style>
 
 <style>
@@ -99,11 +113,23 @@ footer h4{font-family:var(--serif);font-weight:400;font-style:italic;font-size:c
 <div class="wrap">
   <header class="mast">
     <div class="brand"><img src="logo-white.png" alt="Logo de Pato Productions" width="56" height="56"><div class="cap">Pato Productions — Medellín</div></div>
-    <h1>Videos musicales <em>&amp;</em> edits</h1>
-    <p class="disc">Dirección, edición, efectos visuales y color para la música urbana.</p>
+    <h1 id="h1">Edición <em>&amp;</em> dirección</h1>
+    <p class="disc" id="disc">Escoge qué quieres ver.</p>
+    <a class="back cap" href="#" hidden>← Volver al inicio</a>
   </header>
 
-  <div class="bar">
+  <nav class="hall" data-view="hall" aria-label="Escoge una sección">
+    <a class="door" href="#musica">
+      <video src="clips/23.mp4" poster="clips/23.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+      <span class="door-txt"><span class="cap">Dirección · edición · VFX · color</span><span class="door-t">Videos <em>musicales</em></span></span>
+    </a>
+    <a class="door" href="#youtube">
+      <video src="clips/y6.mp4" poster="clips/y6.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+      <span class="door-txt"><span class="cap">Edición para creadores</span><span class="door-t">You<em>Tube</em></span></span>
+    </a>
+  </nav>
+
+  <div class="bar" data-view="musica">
     <div class="tabs" role="group" aria-label="Filtrar por rol">
       <button type="button" id="f-all" data-f="all" aria-pressed="true">Todo</button>
       <button type="button" id="f-dir" data-f="dir" aria-pressed="false">Dirección</button>
@@ -118,18 +144,13 @@ footer h4{font-family:var(--serif);font-weight:400;font-style:italic;font-size:c
     </div>
   </div>
 
-  <main class="grid" id="grid"></main>
+  <main class="grid" id="grid" data-view="musica"></main>
 
-  <section class="sec" id="youtube">
-    <div>
-      <div class="cap">Edición para creadores</div>
-      <h3>You<em>Tube</em></h3>
-      <p>Videos e intros de Roblox para canales infantiles: avatares PNGtuber, subtítulos animados, memes y SFX al ritmo del gameplay.</p>
-    </div>
+  <section class="sec" id="youtube" data-view="youtube">
     <div class="grid" id="grid-yt"></div>
   </section>
 
-  <section class="sec">
+  <section class="sec" data-view="musica">
     <div>
       <div class="cap">Proyectos personales</div>
       <h3>Fan <em>edits</em></h3>
@@ -227,9 +248,22 @@ document.querySelectorAll("[data-s]").forEach(b=>b.addEventListener("click",()=>
   });
 }));
 
+/* antesala: #musica o #youtube; sin hash se muestra la puerta de entrada */
+const TXT={hall:["Edición <em>&amp;</em> dirección","Escoge qué quieres ver."],
+  musica:["Videos musicales <em>&amp;</em> edits","Dirección, edición, efectos visuales y color para la música urbana."],
+  youtube:["Edición para <em>YouTube</em>","Videos e intros de Roblox para canales infantiles: avatares PNGtuber, subtítulos animados, memes y SFX al ritmo del gameplay."]};
+const route=()=>{
+  const v=location.hash==="#musica"?"musica":location.hash==="#youtube"?"youtube":"hall";
+  document.querySelectorAll("[data-view]").forEach(el=>{el.hidden=el.dataset.view!==v;});
+  document.getElementById("h1").innerHTML=TXT[v][0];document.getElementById("disc").textContent=TXT[v][1];
+  document.querySelector(".back").hidden=v==="hall";
+  scrollTo(0,0);
+};
+addEventListener("hashchange",route);route();
+
 /* solo se reproducen los loops visibles, para que la página no pese */
 const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){const pr=v.play();if(pr)pr.catch(()=>{});}else v.pause();}),{threshold:.25});
-document.querySelectorAll(".screen video").forEach(v=>io.observe(v));
+document.querySelectorAll(".screen video,.door video").forEach(v=>io.observe(v));
 
 const lb=document.createElement("div");lb.className="lb";lb.hidden=true;
 lb.innerHTML='<button class="lb-close" type="button">Cerrar ✕</button><div class="lb-box"></div>';
