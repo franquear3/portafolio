@@ -103,7 +103,17 @@ a.screen:hover video.hov,a.screen:focus-visible video.hov{opacity:1}
 .door-t em{font-style:italic}
 .back{color:var(--brass)!important;align-self:flex-start}
 .back:hover{color:var(--paper)!important}
-[data-view="youtube"].sec{border-top:0;padding-top:0}
+[data-view="youtube"].sec,[data-view="empresas"].sec{border-top:0;padding-top:0}
+.hall{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+/* empresas: reels verticales */
+.grid.vert{grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:48px 24px}
+.vert .screen{aspect-ratio:9/16}
+.vert .piece.feature{grid-column:auto}
+.vert h2{font-size:clamp(20px,1.8vw,24px)}
+.stat{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:22px;background:linear-gradient(160deg,#1d1a16,#0f0d0b)}
+.stat b{font-family:var(--serif);font-weight:400;font-size:clamp(40px,4vw,56px);line-height:.9;color:var(--paper)}
+.stat small{font:400 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+a.screen:hover .stat b{color:var(--brass)}
 </style>
 
 <style>
@@ -132,6 +142,10 @@ a.screen:hover video.hov,a.screen:focus-visible video.hov{opacity:1}
       <video src="clips/y6.mp4" poster="clips/y6.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
       <span class="door-txt"><span class="cap">Edición para creadores</span><span class="door-t">You<em>Tube</em></span></span>
     </a>
+    <a class="door" href="#empresas">
+      <video src="clips/b-cm01.mp4" poster="clips/b-cm01.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+      <span class="door-txt"><span class="cap">Reels · campañas · institucional</span><span class="door-t">Em<em>presas</em></span></span>
+    </a>
   </nav>
 
   <div class="bar" data-view="musica">
@@ -153,6 +167,11 @@ a.screen:hover video.hov,a.screen:focus-visible video.hov{opacity:1}
 
   <section class="sec" id="youtube" data-view="youtube">
     <div class="grid" id="grid-yt"></div>
+  </section>
+
+  <section class="sec" id="empresas" data-view="empresas">
+    <div class="grid" id="grid-bh"></div>
+    <div class="grid vert" id="grid-b"></div>
   </section>
 
   <section class="sec" data-view="musica">
@@ -196,6 +215,7 @@ const P = [
  {n:"22",id:"_P6_Sitk_pc",d:"2025-02-14",t:"G Love",a:"Kidd Anyel",r:["dir","edit","vfx","color"]},
  {n:"19",id:"cf4FZacLbkM",d:"2025-09-11",t:"Obvio Mani",a:"Big G · visualizer",r:["dir","edit","vfx"]},
  {n:"08",id:"nWQl5w921K0",d:"2025-01-30",t:"Griselda Blanco",a:"Jaygee · video lyric",r:["edit","vfx"]},
+ {n:"gl",id:"667Dh74uz70",d:"2025-06-01",t:"Ghetto Love",a:"",r:["mon"],noclip:1},
  {n:"16",id:"5gMzT2bn_bU",d:"2022-06-29",t:"De la noche a la mañana",a:"Aspenwapp",r:["cam"]}
 ];
 const E = [
@@ -215,7 +235,24 @@ const Y = [
  {n:"y4",id:"yW4CHP4vRZo",d:"2026-11-13",t:"Una chica ángel secuestró a Sonic",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1},
  {n:"y2",id:"SNtI6nNtsAU",d:"2026-11-11",t:"No toques el agua",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1},
  {n:"17",id:"jmXEns8YBGI",d:"2026-09-05",t:"BTS Safari",a:"Detrás de cámara · Fariana",r:["edit"],yt:1},
+ {n:"ybo",id:"dnnydFq004c",d:"2025-09-11",t:"BTS Obvio Mani",a:"Detrás de cámara · Big G",r:["edit"],yt:1,noclip:1},
  {n:"y1",id:"Zu2lcOo9AsQ",d:"2026-11-09",t:"Me convertí en un perro",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1}
+];
+
+/* Empresas: id = YouTube (oculto); ig = Instagram; v = preview local (clips/b-*.mp4); vis = vistas para las tarjetas sin preview */
+const BH = [
+ {n:"bt",id:"lTs8BCdVcco",d:"2026-05-08",t:"Terridata",a:"Pitch institucional · aprobado en 2 alcaldías",r:["edit","motion"],yt:1,noclip:1,feat:1}
+];
+const B = [
+ {n:"b-cm01",id:"XCLwQFo5YhE",d:"2025-07-31",t:"Colombiamoda",a:"Reel de pasarela y ciudad",r:["edit","color"]},
+ {n:"b-cm02",id:"zDBJFaRoX9M",d:"2025-08-01",t:"Colombiamoda",a:"Reel de moda",r:["edit","color"]},
+ {n:"b-dc02",id:"9sucRBa9rT4",d:"2026-11-10",t:"Don Chinga",a:"Restaurante mexicano · reel",r:["edit"]},
+ {n:"b-dc03",id:"0PP-zBszokE",d:"2026-11-16",t:"Don Chinga",a:"Restaurante mexicano · reel",r:["edit"]},
+ {n:"b-esc",ig:"DRS8K0mkZkB",vis:"142 mil",d:"2025-11-20",t:"Dr. Escorcia",a:"Cirugía estética · lipopapada",r:["edit"]},
+ {n:"b-gis",ig:"DQVJCvwksBN",vis:"84 mil",d:"2025-10-28",t:"Gisela Mejía",a:"Bienes raíces · Proyecto Serenia",r:["edit"]},
+ {n:"b-rev",ig:"DQDHj1ngBWg",vis:"43 mil",d:"2025-10-20",t:"Re-Evolution",a:"Health & wellness · pilates",r:["edit"]},
+ {n:"b-cir",ig:"DYNboLMty_T",vis:"32 mil",d:"2026-05-15",t:"Cirkus",a:"Calzado · campaña Hell of Flowers",r:["edit"]},
+ {n:"b-808",ig:"DY-wx6wP346",vis:"11 mil",d:"2026-05-25",t:"808 Fest",a:"ENMED · clip del festival",r:["cam","edit"]}
 ];
 
 const MES=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
@@ -232,6 +269,7 @@ const card=(p,url,where,media)=>`<article class="piece${p.feat?" feature":""}${p
 const render=list=>list.filter(p=>!p.noclip||p.id).map(p=>{
   const url=p.id?"https://www.youtube.com/watch?v="+p.id:(p.v||(p.ig?"https://www.instagram.com/p/"+p.ig+"/":""));
   const where=p.ig&&!p.id?"Ver en Instagram":"Reproducir";
+  if(p.vis) return card(p,url,where,`<div class="stat"><b>${p.vis}</b><small>vistas en Instagram</small></div>`);
   const thumb=p.id?`<img src="https://i.ytimg.com/vi/${p.id}/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/${p.id}/hqdefault.jpg'" alt="" loading="lazy">`:"";
   if(p.yt&&p.id) return card(p,url,where,thumb+(p.noclip?"":`<video class="hov" src="clips/${p.n}.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>`));
   const media=p.noclip?`<img src="https://i.ytimg.com/vi/${p.id}/hqdefault.jpg" alt="" loading="lazy">`
@@ -240,6 +278,8 @@ const render=list=>list.filter(p=>!p.noclip||p.id).map(p=>{
 document.getElementById("grid").innerHTML=render(P);
 document.getElementById("grid-yt").innerHTML=render(Y);
 document.getElementById("grid-edits").innerHTML=render(E);
+document.getElementById("grid-bh").innerHTML=render(BH);
+document.getElementById("grid-b").innerHTML=render(B);
 document.querySelectorAll(".grid").forEach(g=>[...g.children].forEach((el,i)=>{el.dataset.i=i;}));
 
 document.querySelectorAll("[data-f]").forEach(b=>b.addEventListener("click",()=>{
@@ -259,9 +299,10 @@ document.querySelectorAll("[data-s]").forEach(b=>b.addEventListener("click",()=>
 /* antesala: #musica o #youtube; sin hash se muestra la puerta de entrada */
 const TXT={hall:["Edición <em>&amp;</em> dirección","Escoge qué quieres ver."],
   musica:["Videos musicales <em>&amp;</em> edits","Dirección, edición, efectos visuales y color para la música urbana."],
-  youtube:["Edición para <em>YouTube</em>","Edición, motion graphics, vlogs y detrás de cámaras para creadores de contenido."]};
+  youtube:["Edición para <em>YouTube</em>","Edición, motion graphics, vlogs y detrás de cámaras para creadores de contenido."],
+  empresas:["Contenido para <em>marcas</em>","Reels, campañas e institucional: no solo mostrar el producto, sino que el público quiera ser parte de la marca."]};
 const route=()=>{
-  const v=location.hash==="#musica"?"musica":location.hash==="#youtube"?"youtube":"hall";
+  const v=["#musica","#youtube","#empresas"].includes(location.hash)?location.hash.slice(1):"hall";
   document.querySelectorAll("[data-view]").forEach(el=>{el.hidden=el.dataset.view!==v;});
   document.getElementById("h1").innerHTML=TXT[v][0];document.getElementById("disc").textContent=TXT[v][1];
   document.querySelector(".back").hidden=v==="hall";
