@@ -245,7 +245,7 @@ const Y = [
 const BH = [
  {n:"bt",id:"lTs8BCdVcco",d:"2026-05-08",t:"Terridata",a:"Pitch institucional · aprobado en 2 alcaldías",r:["edit","motion"],yt:1,noclip:1,feat:1},
  {n:"b-cir",clip:1,ig:"DYNboLMty_T",vis:"32 mil",d:"2026-05-15",t:"Cirkus",a:"Calzado · campaña Hell of Flowers",r:["edit"]},
- {n:"b-808",clip:1,ig:"DY-wx6wP346",vis:"11 mil",d:"2026-05-25",t:"808 Fest",a:"ENMED · clip del festival",r:["cam","edit"]}
+ {n:"b-808",clip:1,ig:"DY-wx6wP346",vis:"11 mil",d:"2026-05-25",t:"808 Fest",a:"ENMED · clip del festival",r:["ia"]}
 ];
 const B = [
  {n:"b-cm01",id:"XCLwQFo5YhE",ext:1,d:"2025-07-31",t:"Colombiamoda",a:"Reel de pasarela y ciudad",r:["edit","color"]},
@@ -259,7 +259,7 @@ const B = [
 
 const MES=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
 const fmt=d=>{const [y,m]=d.split("-");return `${MES[+m-1]} ${y}`;};
-const RL={dir:"Dirección",edit:"Edición",vfx:"VFX",color:"Color",mon:"Montaje",cam:"Segunda cámara",motion:"Motion graphics"};
+const RL={dir:"Dirección",edit:"Edición",vfx:"VFX",color:"Color",mon:"Montaje",cam:"Segunda cámara",motion:"Motion graphics",ia:"Edición con IA"};
 const card=(p,url,where,media)=>`<article data-ext="${p.ext?1:""}" class="piece${p.feat?" feature":""}${p.yt?" yt":""}" data-r="${p.r.join(" ")}" data-d="${p.d}">
     ${url?`<a class="screen" href="${url}" target="_blank" rel="noopener" aria-label="${p.t}, ${where}">${media}<span class="open">${where} ↗</span></a>`:`<div class="screen">${media}</div>`}
     <div class="meta">
