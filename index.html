@@ -114,6 +114,7 @@ a.screen:hover video.hov,a.screen:focus-visible video.hov{opacity:1}
 .stat b{font-family:var(--serif);font-weight:400;font-size:clamp(40px,4vw,56px);line-height:.9;color:var(--paper)}
 .stat small{font:400 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
 a.screen:hover .stat b{color:var(--brass)}
+.views{position:absolute;left:12px;top:12px;font:400 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--paper);background:rgba(12,11,10,.6);padding:5px 8px}
 </style>
 
 <style>
@@ -249,8 +250,8 @@ const B = [
  {n:"b-dc02",id:"9sucRBa9rT4",d:"2026-11-10",t:"Don Chinga",a:"Restaurante mexicano · reel",r:["edit"]},
  {n:"b-dc03",id:"0PP-zBszokE",d:"2026-11-16",t:"Don Chinga",a:"Restaurante mexicano · reel",r:["edit"]},
  {n:"b-esc",ig:"DRS8K0mkZkB",vis:"142 mil",d:"2025-11-20",t:"Dr. Escorcia",a:"Cirugía estética · lipopapada",r:["edit"]},
- {n:"b-gis",ig:"DQVJCvwksBN",vis:"84 mil",d:"2025-10-28",t:"Gisela Mejía",a:"Bienes raíces · Proyecto Serenia",r:["edit"]},
- {n:"b-rev",ig:"DQDHj1ngBWg",vis:"43 mil",d:"2025-10-20",t:"Re-Evolution",a:"Health & wellness · pilates",r:["edit"]},
+ {n:"b-gis",clip:1,ig:"DQVJCvwksBN",vis:"84 mil",d:"2025-10-28",t:"Gisela Mejía",a:"Bienes raíces · Proyecto Serenia",r:["edit"]},
+ {n:"b-rev",clip:1,ig:"DQDHj1ngBWg",vis:"43 mil",d:"2025-10-20",t:"Re-Evolution",a:"Health & wellness · pilates",r:["edit"]},
  {n:"b-cir",ig:"DYNboLMty_T",vis:"32 mil",d:"2026-05-15",t:"Cirkus",a:"Calzado · campaña Hell of Flowers",r:["edit"]},
  {n:"b-808",ig:"DY-wx6wP346",vis:"11 mil",d:"2026-05-25",t:"808 Fest",a:"ENMED · clip del festival",r:["cam","edit"]}
 ];
@@ -269,6 +270,7 @@ const card=(p,url,where,media)=>`<article data-ext="${p.ext?1:""}" class="piece$
 const render=list=>list.filter(p=>!p.noclip||p.id).map(p=>{
   const url=p.id?"https://www.youtube.com/watch?v="+p.id:(p.v||(p.ig?"https://www.instagram.com/p/"+p.ig+"/":""));
   const where=p.ig&&!p.id?"Ver en Instagram":p.ext?"Ver en YouTube":"Reproducir";
+  if(p.vis&&p.clip) return card(p,url,where,`<video src="clips/${p.n}.mp4" poster="clips/${p.n}.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video><span class="views">${p.vis} vistas</span>`);
   if(p.vis) return card(p,url,where,`<div class="stat"><b>${p.vis}</b><small>vistas en Instagram</small></div>`);
   const thumb=p.id?`<img src="https://i.ytimg.com/vi/${p.id}/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/${p.id}/hqdefault.jpg'" alt="" loading="lazy">`:"";
   if(p.yt&&p.id) return card(p,url,where,thumb+(p.noclip?"":`<video class="hov" src="clips/${p.n}.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>`));
