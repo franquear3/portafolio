@@ -108,6 +108,7 @@ a.screen:hover video.hov,a.screen:focus-visible video.hov{opacity:1}
 /* empresas: reels verticales */
 .grid.vert{grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:48px 24px}
 .vert .screen{aspect-ratio:9/16}
+#grid-b{margin-top:56px}
 .vert .piece.feature{grid-column:auto}
 .vert h2{font-size:clamp(20px,1.8vw,24px)}
 .stat{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:22px;background:linear-gradient(160deg,#1d1a16,#0f0d0b)}
@@ -242,18 +243,18 @@ const Y = [
 
 /* Empresas: id = YouTube (oculto); ig = Instagram; v = preview local (clips/b-*.mp4); vis = vistas para las tarjetas sin preview */
 const BH = [
- {n:"bt",id:"lTs8BCdVcco",d:"2026-05-08",t:"Terridata",a:"Pitch institucional · aprobado en 2 alcaldías",r:["edit","motion"],yt:1,noclip:1,feat:1}
+ {n:"bt",id:"lTs8BCdVcco",d:"2026-05-08",t:"Terridata",a:"Pitch institucional · aprobado en 2 alcaldías",r:["edit","motion"],yt:1,noclip:1,feat:1},
+ {n:"b-cir",clip:1,ig:"DYNboLMty_T",vis:"32 mil",d:"2026-05-15",t:"Cirkus",a:"Calzado · campaña Hell of Flowers",r:["edit"]},
+ {n:"b-808",clip:1,ig:"DY-wx6wP346",vis:"11 mil",d:"2026-05-25",t:"808 Fest",a:"ENMED · clip del festival",r:["cam","edit"]}
 ];
 const B = [
  {n:"b-cm01",id:"XCLwQFo5YhE",ext:1,d:"2025-07-31",t:"Colombiamoda",a:"Reel de pasarela y ciudad",r:["edit","color"]},
  {n:"b-cm02",id:"zDBJFaRoX9M",ext:1,d:"2025-08-01",t:"Colombiamoda",a:"Reel de moda",r:["edit","color"]},
  {n:"b-dc02",id:"9sucRBa9rT4",d:"2026-11-10",t:"Don Chinga",a:"Restaurante mexicano · reel",r:["edit"]},
  {n:"b-dc03",id:"0PP-zBszokE",d:"2026-11-16",t:"Don Chinga",a:"Restaurante mexicano · reel",r:["edit"]},
- {n:"b-esc",ig:"DRS8K0mkZkB",vis:"142 mil",d:"2025-11-20",t:"Dr. Escorcia",a:"Cirugía estética · lipopapada",r:["edit"]},
+ {n:"b-esc",clip:1,ig:"DRS8K0mkZkB",vis:"142 mil",d:"2025-11-20",t:"Dr. Escorcia",a:"Cirugía estética · lipopapada",r:["edit"]},
  {n:"b-gis",clip:1,ig:"DQVJCvwksBN",vis:"84 mil",d:"2025-10-28",t:"Gisela Mejía",a:"Bienes raíces · Proyecto Serenia",r:["edit"]},
- {n:"b-rev",clip:1,ig:"DQDHj1ngBWg",vis:"43 mil",d:"2025-10-20",t:"Re-Evolution",a:"Health & wellness · pilates",r:["edit"]},
- {n:"b-cir",ig:"DYNboLMty_T",vis:"32 mil",d:"2026-05-15",t:"Cirkus",a:"Calzado · campaña Hell of Flowers",r:["edit"]},
- {n:"b-808",ig:"DY-wx6wP346",vis:"11 mil",d:"2026-05-25",t:"808 Fest",a:"ENMED · clip del festival",r:["cam","edit"]}
+ {n:"b-rev",clip:1,ig:"DQDHj1ngBWg",vis:"43 mil",d:"2025-10-20",t:"Re-Evolution",a:"Health & wellness · pilates",r:["edit"]}
 ];
 
 const MES=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
