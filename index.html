@@ -100,7 +100,7 @@ a.screen:hover video.hov,a.screen:focus-visible video.hov{opacity:1}
 .door:hover video,.door:focus-visible video{transform:scale(1.03);filter:saturate(1) brightness(.92)}
 .door::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,11,10,.9),rgba(12,11,10,.35) 35%,rgba(12,11,10,0) 60%)}
 .door-txt{z-index:1;position:absolute;left:28px;right:28px;bottom:28px;display:flex;flex-direction:column;gap:10px}
-.door-txt .cap{color:var(--brass)}
+.door-txt .cap{color:var(--brass);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .door{container-type:inline-size}
 .door-t{font-family:var(--serif);font-weight:400;font-size:clamp(26px,10cqi,52px);line-height:1;white-space:nowrap;letter-spacing:-.015em;color:var(--paper)}
 .door-t em{font-style:italic}
@@ -143,7 +143,7 @@ a.screen:hover .stat b{color:var(--brass)}
   <nav class="hall" data-view="hall" aria-label="Escoge una sección">
     <a class="door" href="#musica">
       <video src="clips/23.mp4" poster="clips/23.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
-      <span class="door-txt"><span class="cap">Dirección · edición · VFX · color</span><span class="door-t">Videos <em>musicales</em></span></span>
+      <span class="door-txt"><span class="cap">Dirección · edición · VFX</span><span class="door-t">Videos <em>musicales</em></span></span>
     </a>
     <a class="door" href="#youtube">
       <video src="clips/door-yt.mp4" poster="clips/door-yt.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
@@ -151,7 +151,7 @@ a.screen:hover .stat b{color:var(--brass)}
     </a>
     <a class="door" href="#empresas">
       <video src="clips/door-emp.mp4" poster="clips/door-emp.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
-      <span class="door-txt"><span class="cap">Reels · campañas · institucional</span><span class="door-t">Em<em>presas</em></span></span>
+      <span class="door-txt"><span class="cap">Reels · campañas</span><span class="door-t">Em<em>presas</em></span></span>
     </a>
     <a class="door" href="#propios">
       <video src="clips/door-prop.mp4" poster="clips/door-prop.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
