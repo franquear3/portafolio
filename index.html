@@ -106,8 +106,8 @@ a.screen:hover video.hov,a.screen:focus-visible video.hov{opacity:1}
 .door-t em{font-style:italic}
 .back{color:var(--brass)!important;align-self:flex-start}
 .back:hover{color:var(--paper)!important}
-[data-view="youtube"].sec,[data-view="empresas"].sec{border-top:0;padding-top:0}
-.hall{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px}
+[data-view="youtube"].sec,[data-view="empresas"].sec,[data-view="propios"].sec{border-top:0;padding-top:0}
+.hall{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px}
 .door-txt{left:24px;right:24px;bottom:26px}
 @media (max-width:640px){.door{aspect-ratio:4/3}.hall{gap:16px}}
 /* empresas: reels verticales */
@@ -153,6 +153,10 @@ a.screen:hover .stat b{color:var(--brass)}
       <video src="clips/door-emp.mp4" poster="clips/door-emp.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
       <span class="door-txt"><span class="cap">Reels · campañas · institucional</span><span class="door-t">Em<em>presas</em></span></span>
     </a>
+    <a class="door" href="#propios">
+      <video src="clips/door-prop.mp4" poster="clips/door-prop.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+      <span class="door-txt"><span class="cap">Fan edits · anime · series</span><span class="door-t">Proyectos <em>propios</em></span></span>
+    </a>
   </nav>
 
   <div class="bar" data-view="musica">
@@ -181,12 +185,7 @@ a.screen:hover .stat b{color:var(--brass)}
     <div class="grid vert" id="grid-b"></div>
   </section>
 
-  <section class="sec" data-view="musica">
-    <div>
-      <div class="cap">Proyectos personales</div>
-      <h3>Fan <em>edits</em></h3>
-      <p>Piezas propias sobre anime, cine y series, hechas con material de terceros.</p>
-    </div>
+  <section class="sec" id="propios" data-view="propios">
     <div class="grid" id="grid-edits"></div>
   </section>
 
@@ -306,11 +305,12 @@ document.querySelectorAll("[data-s]").forEach(b=>b.addEventListener("click",()=>
 
 /* antesala: #musica o #youtube; sin hash se muestra la puerta de entrada */
 const TXT={hall:["Edición <em>&amp;</em> dirección","Escoge qué quieres ver."],
-  musica:["Videos musicales <em>&amp;</em> edits","Dirección, edición, efectos visuales y color para la música urbana."],
+  musica:["Videos <em>musicales</em>","Dirección, edición, efectos visuales y color para la música urbana."],
   youtube:["Edición para <em>YouTube</em>","Edición, motion graphics, vlogs y detrás de cámaras para creadores de contenido."],
+  propios:["Proyectos <em>propios</em>","Fan edits sobre anime, cine y series, hechos con material de terceros."],
   empresas:["Contenido para <em>marcas</em>","Reels, campañas e institucional: no solo mostrar el producto, sino que el público quiera ser parte de la marca."]};
 const route=()=>{
-  const v=["#musica","#youtube","#empresas"].includes(location.hash)?location.hash.slice(1):"hall";
+  const v=["#musica","#youtube","#empresas","#propios"].includes(location.hash)?location.hash.slice(1):"hall";
   document.querySelectorAll("[data-view]").forEach(el=>{el.hidden=el.dataset.view!==v;});
   document.getElementById("h1").innerHTML=TXT[v][0];document.getElementById("disc").textContent=TXT[v][1];
   document.querySelector(".back").hidden=v==="hall";
