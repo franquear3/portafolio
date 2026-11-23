@@ -113,7 +113,7 @@ a.screen:hover video.hov,a.screen:focus-visible video.hov{opacity:1}
 /* empresas: reels verticales */
 .grid.vert{grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:48px 24px}
 .vert .screen{aspect-ratio:9/16}
-#grid-b{margin-top:56px}
+#grid-b,#grid-ys{margin-top:56px}
 .vert .piece.feature{grid-column:auto}
 .vert h2{font-size:clamp(20px,1.8vw,24px)}
 .stat{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:22px;background:linear-gradient(160deg,#1d1a16,#0f0d0b)}
@@ -178,6 +178,7 @@ a.screen:hover .stat b{color:var(--brass)}
 
   <section class="sec" id="youtube" data-view="youtube">
     <div class="grid" id="grid-yt"></div>
+    <div class="grid vert" id="grid-ys"></div>
   </section>
 
   <section class="sec" id="empresas" data-view="empresas">
@@ -245,6 +246,11 @@ const Y = [
  {n:"y1",id:"Zu2lcOo9AsQ",d:"2026-11-09",t:"Me convertí en un perro",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1}
 ];
 
+/* YouTube Shorts (verticales) */
+const YS = [
+ {n:"ys1",id:"H1NdNHBzfI0",d:"2026-11-20",t:"Torre de lava",a:"Short para Zurito · Roblox",r:["edit","motion"]}
+];
+
 /* Empresas: id = YouTube (oculto); ig = Instagram; v = preview local (clips/b-*.mp4); vis = vistas para las tarjetas sin preview */
 const BH = [
  {n:"bt",id:"lTs8BCdVcco",d:"2026-05-08",t:"Terridata",a:"Pitch institucional · aprobado en 2 alcaldías",r:["edit","motion"],feat:1},
@@ -284,6 +290,7 @@ const render=list=>list.filter(p=>!p.noclip||p.id).map(p=>{
   return card(p,url,where,media);}).join("");
 document.getElementById("grid").innerHTML=render(P);
 document.getElementById("grid-yt").innerHTML=render(Y);
+document.getElementById("grid-ys").innerHTML=render(YS);
 document.getElementById("grid-edits").innerHTML=render(E);
 document.getElementById("grid-bh").innerHTML=render(BH);
 document.getElementById("grid-b").innerHTML=render(B);
