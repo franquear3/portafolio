@@ -104,7 +104,7 @@ a.screen:hover video.hov,a.screen:focus-visible video.hov{opacity:1}
 /* antesala */
 .hall{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px}
 .door{position:relative;display:block;aspect-ratio:4/5;min-width:0;width:100%;overflow:hidden;background:var(--ink-2)}
-.door video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.78);transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .6s}
+.door video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.95) brightness(.9);transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .6s}
 .door:hover video,.door:focus-visible video{transform:scale(1.03);filter:saturate(1) brightness(.92)}
 .door::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,11,10,.9),rgba(12,11,10,.35) 35%,rgba(12,11,10,0) 60%)}
 .door-txt{z-index:1;position:absolute;left:28px;right:28px;bottom:28px;display:flex;flex-direction:column;gap:10px}
@@ -156,7 +156,7 @@ a.screen:hover .stat b{color:var(--brass)}
 
   <nav class="hall" data-view="hall">
     <a class="door" href="#musica">
-      <video src="clips/23.mp4" poster="clips/23.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+      <video src="clips/door-mus.mp4" poster="clips/door-mus.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
       <span class="door-txt"><span class="cap" data-i="d1c">Dirección · edición · VFX</span><span class="door-t" data-i="d1t">Videos <em>musicales</em></span></span>
     </a>
     <a class="door" href="#youtube">
