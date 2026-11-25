@@ -124,6 +124,9 @@ a.screen:hover video.hov,a.screen:focus-visible video.hov{opacity:1}
 #grid-b,#grid-ys{margin-top:56px}
 .vert .piece.feature{grid-column:auto}
 .vert h2{font-size:clamp(20px,1.8vw,24px)}
+.vert .meta{grid-template-columns:minmax(0,1fr)}
+.vert .date{order:-1}
+.artist,h2{overflow-wrap:anywhere}
 .stat{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:22px;background:linear-gradient(160deg,#1d1a16,#0f0d0b)}
 .stat b{font-family:var(--serif);font-weight:400;font-size:clamp(40px,4vw,56px);line-height:.9;color:var(--paper)}
 .stat small{font:400 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
@@ -283,12 +286,12 @@ const B = [
  {n:"b-dc02",id:"9sucRBa9rT4",d:"2026-11-10",t:"Don Chinga",a:"Restaurante mexicano · reel",ae:"Mexican restaurant · reel",r:["edit"]},
  {n:"b-dc03",id:"0PP-zBszokE",d:"2026-11-16",t:"Don Chinga",a:"Restaurante mexicano · reel",ae:"Mexican restaurant · reel",r:["edit"]},
  {n:"b-esc",clip:1,ig:"DRS8K0mkZkB",vis:"142",d:"2025-11-20",t:"Dr. Escorcia",a:"Cirugía estética · lipopapada",ae:"Cosmetic surgery · chin lipo",r:["edit"]},
- {n:"b-zo9",id:"nEU7TedqmoY",d:"2025-11-06",t:"Rejuvenecimiento facial",te:"Facial rejuvenation",a:"Zoul · cirugía plástica · subtítulos ES/EN",ae:"Zoul · plastic surgery · ES/EN captions",r:["edit","motion"]},
- {n:"b-zo8",id:"OQtoUygR_iA",d:"2025-11-06",t:"¿Cuál escojo?",te:"Which one to choose?",a:"Zoul · cirugía plástica · subtítulos ES/EN",ae:"Zoul · plastic surgery · ES/EN captions",r:["edit","motion"]},
- {n:"b-zo4",id:"4lRaFZCxOqs",d:"2025-11-06",t:"Recuperación",te:"Recovery",a:"Zoul · cirugía plástica · subtítulos ES/EN",ae:"Zoul · plastic surgery · ES/EN captions",r:["edit","motion"]},
+ {n:"b-zo9",id:"nEU7TedqmoY",d:"2025-11-06",t:"Rejuvenecimiento facial",te:"Facial rejuvenation",a:"Zoul · cirugía plástica",ae:"Zoul · plastic surgery",r:["edit","motion","subs"]},
+ {n:"b-zo8",id:"OQtoUygR_iA",d:"2025-11-06",t:"¿Cuál escojo?",te:"Which one to choose?",a:"Zoul · cirugía plástica",ae:"Zoul · plastic surgery",r:["edit","motion","subs"]},
+ {n:"b-zo4",id:"4lRaFZCxOqs",d:"2025-11-06",t:"Recuperación",te:"Recovery",a:"Zoul · cirugía plástica",ae:"Zoul · plastic surgery",r:["edit","motion","subs"]},
  {n:"b-gis",clip:1,ig:"DQVJCvwksBN",vis:"84",d:"2025-10-28",t:"Gisela Mejía",a:"Bienes raíces · Proyecto Serenia",ae:"Real estate · Serenia project",r:["edit"]},
  {n:"b-gm02",id:"0harrnKwexg",d:"2025-11-04",t:"Gisela Mejía",a:"Bienes raíces · inversión",ae:"Real estate · investing",r:["edit"]},
- {n:"b-rev",clip:1,ig:"DQDHj1ngBWg",vis:"43",d:"2025-10-20",t:"Re-Evolution",a:"Health & wellness · pilates",r:["edit"]},
+ {n:"b-rev",clip:1,ig:"DQDHj1ngBWg",vis:"43",d:"2025-10-20",t:"Re-Evolution",a:"Salud y bienestar · pilates",ae:"Health & wellness · pilates",r:["edit"]},
  {n:"b-re08",id:"1IaXMqDetOM",d:"2025-10-18",t:"Barre",a:"Re-Evolution · salud y bienestar",ae:"Re-Evolution · health & wellness",r:["edit"]},
  {n:"b-re13",id:"4kKAWxtkDCw",d:"2025-11-04",t:"Fisioterapia",te:"Physiotherapy",a:"Re-Evolution · salud y bienestar",ae:"Re-Evolution · health & wellness",r:["edit"]},
  {n:"b-re09",id:"RS5waSvavaM",d:"2025-10-18",t:"Rehabilitación",te:"Rehabilitation",a:"Re-Evolution · salud y bienestar",ae:"Re-Evolution · health & wellness",r:["edit"]},
@@ -300,7 +303,7 @@ const T = {
   fall:"Todo",fdir:"Dirección",fedit:"Edición",fmon:"Montaje",sbest:"Selección",snew:"Recientes",work:"Trabajemos <em>juntos</em>",mail:"Correo",
   ig:"Ver en Instagram",ytx:"Ver en YouTube",play:"Reproducir",views:v=>v+" mil vistas",igviews:"vistas en Instagram",close:"Cerrar ✕",
   mes:["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"],
-  rl:{dir:"Dirección",edit:"Edición",vfx:"VFX",color:"Color",mon:"Montaje",cam:"Segunda cámara",motion:"Motion graphics",ia:"Edición con IA"},
+  rl:{dir:"Dirección",edit:"Edición",vfx:"VFX",color:"Color",mon:"Montaje",cam:"Segunda cámara",motion:"Motion graphics",ia:"Edición con IA",subs:"Subtítulos ES/EN"},
   txt:{hall:["Edición <em>&amp;</em> dirección","Escoge qué quieres ver."],
    musica:["Videos <em>musicales</em>","Dirección, edición, efectos visuales y color para la música urbana."],
    youtube:["Edición para <em>YouTube</em>","Edición, motion graphics, shorts, vlogs y detrás de cámaras para creadores de contenido."],
@@ -310,7 +313,7 @@ const T = {
   fall:"All",fdir:"Direction",fedit:"Editing",fmon:"Assembly",sbest:"Selected",snew:"Recent",work:"Let’s work <em>together</em>",mail:"Email",
   ig:"View on Instagram",ytx:"Watch on YouTube",play:"Play",views:v=>v+"K views",igviews:"Instagram views",close:"Close ✕",
   mes:["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"],
-  rl:{dir:"Direction",edit:"Editing",vfx:"VFX",color:"Color",mon:"Assembly",cam:"Second camera",motion:"Motion graphics",ia:"AI editing"},
+  rl:{dir:"Direction",edit:"Editing",vfx:"VFX",color:"Color",mon:"Assembly",cam:"Second camera",motion:"Motion graphics",ia:"AI editing",subs:"ES/EN captions"},
   txt:{hall:["Editing <em>&amp;</em> direction","Choose what you want to see."],
    musica:["Music <em>videos</em>","Direction, editing, visual effects and color for urban music."],
    youtube:["Editing for <em>YouTube</em>","Editing, motion graphics, shorts, vlogs and behind-the-scenes for content creators."],
