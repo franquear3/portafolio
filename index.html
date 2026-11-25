@@ -283,8 +283,15 @@ const B = [
  {n:"b-dc02",id:"9sucRBa9rT4",d:"2026-11-10",t:"Don Chinga",a:"Restaurante mexicano · reel",ae:"Mexican restaurant · reel",r:["edit"]},
  {n:"b-dc03",id:"0PP-zBszokE",d:"2026-11-16",t:"Don Chinga",a:"Restaurante mexicano · reel",ae:"Mexican restaurant · reel",r:["edit"]},
  {n:"b-esc",clip:1,ig:"DRS8K0mkZkB",vis:"142",d:"2025-11-20",t:"Dr. Escorcia",a:"Cirugía estética · lipopapada",ae:"Cosmetic surgery · chin lipo",r:["edit"]},
+ {n:"b-zo9",id:"nEU7TedqmoY",d:"2025-11-06",t:"Rejuvenecimiento facial",te:"Facial rejuvenation",a:"Zoul · cirugía plástica · subtítulos ES/EN",ae:"Zoul · plastic surgery · ES/EN captions",r:["edit","motion"]},
+ {n:"b-zo8",id:"OQtoUygR_iA",d:"2025-11-06",t:"¿Cuál escojo?",te:"Which one to choose?",a:"Zoul · cirugía plástica · subtítulos ES/EN",ae:"Zoul · plastic surgery · ES/EN captions",r:["edit","motion"]},
+ {n:"b-zo4",id:"4lRaFZCxOqs",d:"2025-11-06",t:"Recuperación",te:"Recovery",a:"Zoul · cirugía plástica · subtítulos ES/EN",ae:"Zoul · plastic surgery · ES/EN captions",r:["edit","motion"]},
  {n:"b-gis",clip:1,ig:"DQVJCvwksBN",vis:"84",d:"2025-10-28",t:"Gisela Mejía",a:"Bienes raíces · Proyecto Serenia",ae:"Real estate · Serenia project",r:["edit"]},
- {n:"b-rev",clip:1,ig:"DQDHj1ngBWg",vis:"43",d:"2025-10-20",t:"Re-Evolution",a:"Health & wellness · pilates",r:["edit"]}
+ {n:"b-gm02",id:"0harrnKwexg",d:"2025-11-04",t:"Gisela Mejía",a:"Bienes raíces · inversión",ae:"Real estate · investing",r:["edit"]},
+ {n:"b-rev",clip:1,ig:"DQDHj1ngBWg",vis:"43",d:"2025-10-20",t:"Re-Evolution",a:"Health & wellness · pilates",r:["edit"]},
+ {n:"b-re08",id:"1IaXMqDetOM",d:"2025-10-18",t:"Barre",a:"Re-Evolution · salud y bienestar",ae:"Re-Evolution · health & wellness",r:["edit"]},
+ {n:"b-re13",id:"4kKAWxtkDCw",d:"2025-11-04",t:"Fisioterapia",te:"Physiotherapy",a:"Re-Evolution · salud y bienestar",ae:"Re-Evolution · health & wellness",r:["edit"]},
+ {n:"b-re09",id:"RS5waSvavaM",d:"2025-10-18",t:"Rehabilitación",te:"Rehabilitation",a:"Re-Evolution · salud y bienestar",ae:"Re-Evolution · health & wellness",r:["edit"]},
 ];
 
 /* textos de la interfaz */
@@ -320,7 +327,7 @@ const fmt=d=>{const [y,m]=d.split("-");return `${T[L].mes[+m-1]} ${y}`;};
 const card=(p,url,where,media)=>`<article data-ext="${p.ext?1:""}" class="piece${p.feat?" feature":""}${p.yt?" yt":""}" data-r="${p.r.join(" ")}" data-d="${p.d}">
     ${url?`<a class="screen" href="${url}" target="_blank" rel="noopener" aria-label="${p.t}, ${where}">${media}<span class="open">${where} ↗</span></a>`:`<div class="screen">${media}</div>`}
     <div class="meta">
-      <h2>${p.t}</h2><span class="date">${fmt(p.d)}</span>
+      <h2>${L==="en"&&p.te?p.te:p.t}</h2><span class="date">${fmt(p.d)}</span>
       <p class="artist">${L==="en"&&p.ae?p.ae:p.a}</p>
       <ul class="roles">${p.r.map(r=>`<li class="${r}">${T[L].rl[r]}</li>`).join("")}</ul>
     </div>
