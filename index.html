@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Portafolio de Daniel “Pato” Palomino: dirección, edición, VFX y color para videos musicales.">
+<meta name="description" content="Portafolio de Daniel “Pato” Palomino: edición, dirección, VFX y color para videos musicales, marcas y creadores. Video editor portfolio — music videos, brand reels, YouTube.">
 <link rel="icon" href="logo.png">
-<title>Pato Productions Artistas</title>
+<title>Pato Productions — Edición y dirección</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500&display=swap">
 <style>
@@ -39,6 +39,14 @@ a{color:inherit;text-decoration:none}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.6vw,58px);line-height:1.02;letter-spacing:-.01em;margin:6px 0 0;text-wrap:balance}
 h1 em{font-style:italic;font-weight:400}
 .disc{font-family:var(--sans);font-size:15px;color:var(--ash);margin:0;max-width:52ch}
+
+/* selector de idioma */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.lang{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.lang button{background:none;border:0;padding:4px 0;cursor:pointer;font:400 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--ash);border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.lang button:hover{color:var(--paper)}
+.lang button[aria-pressed="true"]{color:var(--paper);border-bottom-color:var(--brass)}
+.lang span{color:var(--rule)}
 
 /* barra de filtros */
 .bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;align-items:baseline}
@@ -126,6 +134,7 @@ a.screen:hover .stat b{color:var(--brass)}
 <style>
 .lb{position:fixed;inset:0;z-index:50;background:rgba(8,7,6,.92);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
 .lb-box{width:min(1200px,100%);aspect-ratio:16/9;background:#000}
+.lb-box.v{width:auto;height:min(86vh,100%);aspect-ratio:9/16;max-width:100%}
 .lb-box video{width:100%;height:100%;display:block;background:#000}
 .lb-box iframe{width:100%;height:100%;border:0;display:block}
 .lb-close{position:absolute;top:max(16px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));background:none;border:0;color:var(--paper);font:400 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;cursor:pointer;padding:8px}
@@ -134,43 +143,48 @@ a.screen:hover .stat b{color:var(--brass)}
 <body>
 <div class="wrap">
   <header class="mast">
-    <div class="brand"><img src="logo-white.png" alt="Logo de Pato Productions" width="56" height="56"><div class="cap">Pato Productions — Medellín</div></div>
+    <div class="top">
+      <div class="brand"><img src="logo-white.png" alt="Pato Productions" width="56" height="56"><div class="cap">Pato Productions — Medellín</div></div>
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button><span>/</span><button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
     <h1 id="h1">Edición <em>&amp;</em> dirección</h1>
     <p class="disc" id="disc">Escoge qué quieres ver.</p>
-    <a class="back cap" href="#" hidden>← Volver al inicio</a>
+    <a class="back cap" href="#" hidden data-i="back">← Volver al inicio</a>
   </header>
 
-  <nav class="hall" data-view="hall" aria-label="Escoge una sección">
+  <nav class="hall" data-view="hall">
     <a class="door" href="#musica">
       <video src="clips/23.mp4" poster="clips/23.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
-      <span class="door-txt"><span class="cap">Dirección · edición · VFX</span><span class="door-t">Videos <em>musicales</em></span></span>
+      <span class="door-txt"><span class="cap" data-i="d1c">Dirección · edición · VFX</span><span class="door-t" data-i="d1t">Videos <em>musicales</em></span></span>
     </a>
     <a class="door" href="#youtube">
       <video src="clips/door-yt.mp4" poster="clips/door-yt.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
-      <span class="door-txt"><span class="cap">Edición para creadores</span><span class="door-t">You<em>Tube</em></span></span>
+      <span class="door-txt"><span class="cap" data-i="d2c">Edición para creadores</span><span class="door-t">You<em>Tube</em></span></span>
     </a>
     <a class="door" href="#empresas">
       <video src="clips/door-emp.mp4" poster="clips/door-emp.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
-      <span class="door-txt"><span class="cap">Reels · campañas</span><span class="door-t">Em<em>presas</em></span></span>
+      <span class="door-txt"><span class="cap" data-i="d3c">Reels · campañas</span><span class="door-t" data-i="d3t">Em<em>presas</em></span></span>
     </a>
     <a class="door" href="#propios">
       <video src="clips/door-prop.mp4" poster="clips/door-prop.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
-      <span class="door-txt"><span class="cap">Fan edits · anime · series</span><span class="door-t">Proyectos <em>propios</em></span></span>
+      <span class="door-txt"><span class="cap" data-i="d4c">Fan edits · anime · series</span><span class="door-t" data-i="d4t">Proyectos <em>propios</em></span></span>
     </a>
   </nav>
 
   <div class="bar" data-view="musica">
-    <div class="tabs" role="group" aria-label="Filtrar por rol">
-      <button type="button" id="f-all" data-f="all" aria-pressed="true">Todo</button>
-      <button type="button" id="f-dir" data-f="dir" aria-pressed="false">Dirección</button>
-      <button type="button" id="f-edit" data-f="edit" aria-pressed="false">Edición</button>
-      <button type="button" id="f-vfx" data-f="vfx" aria-pressed="false">VFX</button>
-      <button type="button" id="f-color" data-f="color" aria-pressed="false">Color</button>
-      <button type="button" id="f-mon" data-f="mon" aria-pressed="false">Montaje</button>
+    <div class="tabs" role="group">
+      <button type="button" data-f="all" aria-pressed="true" data-i="fall">Todo</button>
+      <button type="button" data-f="dir" aria-pressed="false" data-i="fdir">Dirección</button>
+      <button type="button" data-f="edit" aria-pressed="false" data-i="fedit">Edición</button>
+      <button type="button" data-f="vfx" aria-pressed="false">VFX</button>
+      <button type="button" data-f="color" aria-pressed="false">Color</button>
+      <button type="button" data-f="mon" aria-pressed="false" data-i="fmon">Montaje</button>
     </div>
-    <div class="tabs" role="group" aria-label="Ordenar">
-      <button type="button" id="s-best" data-s="best" aria-pressed="true">Selección</button>
-      <button type="button" id="s-new" data-s="new" aria-pressed="false">Recientes</button>
+    <div class="tabs" role="group">
+      <button type="button" data-s="best" aria-pressed="true" data-i="sbest">Selección</button>
+      <button type="button" data-s="new" aria-pressed="false" data-i="snew">Recientes</button>
     </div>
   </div>
 
@@ -191,15 +205,17 @@ a.screen:hover .stat b{color:var(--brass)}
   </section>
 
   <footer>
-    <div class="sign"><img src="logo.png" alt="" width="88" height="96"><h4>Trabajemos <em>juntos</em></h4></div>
+    <div class="sign"><img src="logo.png" alt="" width="88" height="96"><h4 data-i="work">Trabajemos <em>juntos</em></h4></div>
     <div class="contact">
       <div><span class="cap">Instagram</span><span>@patomino05</span></div>
-      <div><span class="cap">Correo</span><span>franquear3@gmail.com</span></div>
+      <div><span class="cap" data-i="mail">Correo</span><span>franquear3@gmail.com</span></div>
+      <div><span class="cap">Discord</span><span>franquear</span></div>
     </div>
   </footer>
 </div>
 
 <script>
+/* a = texto en español; ae = texto en inglés (si falta, se usa a: nombres de artistas, títulos) */
 const P = [
  {n:"23",id:"FjoQgfX0CP4",d:"2026-11-05",t:"La Pvta Fama",a:"Timmynadamas",r:["dir","edit","vfx"],feat:1},
  {n:"02",id:"ZyucuESvRqo",d:"2025-02-16",t:"Polvo Pending",a:"PRIMO, Bunlo, Yovng Maelo",r:["vfx"]},
@@ -221,80 +237,120 @@ const P = [
  {n:"11",id:"HDEWUDz30nk",d:"2026-08-29",t:"Delicatés",a:"XkarleX · EP 78-7",r:["vfx"]},
  {n:"22",id:"_P6_Sitk_pc",d:"2025-02-14",t:"G Love",a:"Kidd Anyel",r:["dir","edit","vfx","color"]},
  {n:"19",id:"cf4FZacLbkM",d:"2025-09-11",t:"Obvio Mani",a:"Big G · visualizer",r:["dir","edit","vfx"]},
- {n:"08",id:"nWQl5w921K0",d:"2025-01-30",t:"Griselda Blanco",a:"Jaygee · video lyric",r:["edit","vfx"]},
+ {n:"08",id:"nWQl5w921K0",d:"2025-01-30",t:"Griselda Blanco",a:"Jaygee · video lyric",ae:"Jaygee · lyric video",r:["edit","vfx"]},
  {n:"gl",id:"667Dh74uz70",d:"2025-06-01",t:"Ghetto Love",a:"Teo Enviguetto",r:["mon"]},
  {n:"16",id:"5gMzT2bn_bU",d:"2022-06-29",t:"De la noche a la mañana",a:"Aspenwapp",r:["cam"]}
 ];
 const E = [
  {n:"e1",ig:"DfQsXjnB3Yu",d:"2026-11-02",t:"Black Clover",a:"Somewhere I Belong",r:["edit","vfx"],feat:1},
- {n:"e6",ig:"DfVtTUVOaBL",d:"2026-11-04",t:"Chihiro",a:"Visualizer lofi · TouchDesigner",r:["edit","vfx"]},
+ {n:"e6",ig:"DfVtTUVOaBL",d:"2026-11-04",t:"Chihiro",a:"Visualizer lofi · TouchDesigner",ae:"Lo-fi visualizer · TouchDesigner",r:["edit","vfx"]},
  {n:"e2",ig:"DfI7AukRqwo",d:"2026-10-30",t:"Death Note",a:"An Ending In Itself",r:["edit","vfx"]},
  {n:"e4",ig:"DfDrrroSyQc",d:"2026-10-28",t:"What Is Love",a:"Anime",r:["edit","vfx"]},
  {n:"e3",ig:"Deu4P9uh7Rb",d:"2026-10-20",t:"Estuve pensándote II",a:"Breaking Bad · Beleuve",r:["edit","vfx"]},
- {n:"e7",ig:"DerYRsJRwQy",d:"2026-10-19",t:"Estuve pensándote I",a:"Breaking Bad · Beleuve · versión 3D",r:["edit","vfx"]}
+ {n:"e7",ig:"DerYRsJRwQy",d:"2026-10-19",t:"Estuve pensándote I",a:"Breaking Bad · Beleuve · versión 3D",ae:"Breaking Bad · Beleuve · 3D version",r:["edit","vfx"]}
 ];
 
 /* YouTube: id = video de YouTube (vacío hasta tener el link); v = video local que se reproduce en la página; sin clip, la tarjeta usa la miniatura de YouTube */
 const Y = [
- {n:"y6",id:"",v:"clips/y6-full.mp4",d:"2026-11-18",t:"Intro Roblox",a:"Intro de 20 s para youtuber de Roblox",r:["edit","motion"],feat:1},
- {n:"y5",id:"XhGuRqErt_c",d:"2026-11-17",t:"Sonic es secuestrado por chicas lobo",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1},
- {n:"y3",id:"YiMiJBM40EA",d:"2026-11-15",t:"La escuela de anomalías",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1},
- {n:"y4",id:"yW4CHP4vRZo",d:"2026-11-13",t:"Una chica ángel secuestró a Sonic",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1},
- {n:"y2",id:"SNtI6nNtsAU",d:"2026-11-11",t:"No toques el agua",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1},
- {n:"17",id:"jmXEns8YBGI",d:"2026-09-05",t:"BTS Safari",a:"Detrás de cámara · Fariana",r:["edit"],yt:1},
- {n:"ybo",id:"dnnydFq004c",d:"2025-09-11",t:"BTS Obvio Mani",a:"Detrás de cámara · Big G",r:["edit"],yt:1},
- {n:"y1",id:"Zu2lcOo9AsQ",d:"2026-11-09",t:"Me convertí en un perro",a:"Canal samee Blox · Roblox",r:["edit","motion"],yt:1}
+ {n:"y6",id:"",v:"clips/y6-full.mp4",d:"2026-11-18",t:"Intro Roblox",a:"Intro de 20 s para youtuber de Roblox",ae:"20-second intro for a Roblox YouTuber",r:["edit","motion"],feat:1},
+ {n:"y5",id:"XhGuRqErt_c",d:"2026-11-17",t:"Sonic es secuestrado por chicas lobo",a:"Canal samee Blox · Roblox",ae:"samee Blox channel · Roblox",r:["edit","motion"],yt:1},
+ {n:"y3",id:"YiMiJBM40EA",d:"2026-11-15",t:"La escuela de anomalías",a:"Canal samee Blox · Roblox",ae:"samee Blox channel · Roblox",r:["edit","motion"],yt:1},
+ {n:"y4",id:"yW4CHP4vRZo",d:"2026-11-13",t:"Una chica ángel secuestró a Sonic",a:"Canal samee Blox · Roblox",ae:"samee Blox channel · Roblox",r:["edit","motion"],yt:1},
+ {n:"y2",id:"SNtI6nNtsAU",d:"2026-11-11",t:"No toques el agua",a:"Canal samee Blox · Roblox",ae:"samee Blox channel · Roblox",r:["edit","motion"],yt:1},
+ {n:"17",id:"jmXEns8YBGI",d:"2026-09-05",t:"BTS Safari",a:"Detrás de cámara · Fariana",ae:"Behind the scenes · Fariana",r:["edit"],yt:1},
+ {n:"ybo",id:"dnnydFq004c",d:"2025-09-11",t:"BTS Obvio Mani",a:"Detrás de cámara · Big G",ae:"Behind the scenes · Big G",r:["edit"],yt:1},
+ {n:"y1",id:"Zu2lcOo9AsQ",d:"2026-11-09",t:"Me convertí en un perro",a:"Canal samee Blox · Roblox",ae:"samee Blox channel · Roblox",r:["edit","motion"],yt:1}
 ];
 
-/* YouTube Shorts (verticales) */
+/* YouTube Shorts (verticales). noclip: sin preview local todavía, usa la miniatura de YouTube */
 const YS = [
- {n:"ys1",id:"H1NdNHBzfI0",d:"2026-11-20",t:"Torre de lava",a:"Short para Zurito · Roblox",r:["edit","motion"]}
+ {n:"ys1",id:"H1NdNHBzfI0",d:"2026-11-20",t:"Torre de lava",a:"Short para Zurito · Roblox",ae:"Short for Zurito · Roblox",r:["edit","motion"]},
+ {n:"ya1",id:"9Kx-G21BKW0",noclip:1,d:"2026-11-24",t:"Gusano",a:"Clip de stream · Aitana · Valorant",ae:"Stream clip · Aitana · Valorant",r:["edit"]},
+ {n:"ya2",id:"Ib1oG8-C78c",noclip:1,d:"2026-11-24",t:"Tatuajes",a:"Clip de stream · Aitana · Valorant",ae:"Stream clip · Aitana · Valorant",r:["edit"]},
+ {n:"ya3",id:"H3OoImoRxF8",noclip:1,d:"2026-11-24",t:"Cinturón",a:"Clip de stream · Aitana · Valorant",ae:"Stream clip · Aitana · Valorant",r:["edit"]}
 ];
 
 /* Empresas: id = YouTube (oculto); ig = Instagram; v = preview local (clips/b-*.mp4); vis = vistas para las tarjetas sin preview */
 const BH = [
- {n:"bt",id:"lTs8BCdVcco",d:"2026-05-08",t:"Terridata",a:"Pitch institucional · aprobado en 2 alcaldías",r:["edit","motion"],feat:1},
- {n:"b-cir",clip:1,ig:"DYNboLMty_T",vis:"32 mil",d:"2026-05-15",t:"Cirkus",a:"Calzado · campaña Hell of Flowers",r:["edit"]},
- {n:"b-808",clip:1,ig:"DY-wx6wP346",vis:"11 mil",d:"2026-05-25",t:"808 Fest",a:"ENMED · clip del festival",r:["ia"]}
+ {n:"bt",id:"lTs8BCdVcco",d:"2026-05-08",t:"Terridata",a:"Pitch institucional · aprobado en 2 alcaldías",ae:"Institutional pitch · approved by 2 city governments",r:["edit","motion"],feat:1},
+ {n:"b-cir",clip:1,ig:"DYNboLMty_T",vis:"32",d:"2026-05-15",t:"Cirkus",a:"Calzado · campaña Hell of Flowers",ae:"Footwear · Hell of Flowers campaign",r:["edit"]},
+ {n:"b-808",clip:1,ig:"DY-wx6wP346",vis:"11",d:"2026-05-25",t:"808 Fest",a:"ENMED · clip del festival",ae:"ENMED · festival clip",r:["ia"]}
 ];
 const B = [
- {n:"b-cm01",id:"XCLwQFo5YhE",ext:1,d:"2025-07-31",t:"Colombiamoda",a:"Reel de pasarela y ciudad",r:["edit","color"]},
- {n:"b-cm02",id:"zDBJFaRoX9M",ext:1,d:"2025-08-01",t:"Colombiamoda",a:"Reel de moda",r:["edit","color"]},
- {n:"b-dc02",id:"9sucRBa9rT4",d:"2026-11-10",t:"Don Chinga",a:"Restaurante mexicano · reel",r:["edit"]},
- {n:"b-dc03",id:"0PP-zBszokE",d:"2026-11-16",t:"Don Chinga",a:"Restaurante mexicano · reel",r:["edit"]},
- {n:"b-esc",clip:1,ig:"DRS8K0mkZkB",vis:"142 mil",d:"2025-11-20",t:"Dr. Escorcia",a:"Cirugía estética · lipopapada",r:["edit"]},
- {n:"b-gis",clip:1,ig:"DQVJCvwksBN",vis:"84 mil",d:"2025-10-28",t:"Gisela Mejía",a:"Bienes raíces · Proyecto Serenia",r:["edit"]},
- {n:"b-rev",clip:1,ig:"DQDHj1ngBWg",vis:"43 mil",d:"2025-10-20",t:"Re-Evolution",a:"Health & wellness · pilates",r:["edit"]}
+ {n:"b-cm01",id:"XCLwQFo5YhE",ext:1,d:"2025-07-31",t:"Colombiamoda",a:"Reel de pasarela y ciudad",ae:"Runway and city reel",r:["edit","color"]},
+ {n:"b-cm02",id:"zDBJFaRoX9M",ext:1,d:"2025-08-01",t:"Colombiamoda",a:"Reel de moda",ae:"Fashion reel",r:["edit","color"]},
+ {n:"b-dc02",id:"9sucRBa9rT4",d:"2026-11-10",t:"Don Chinga",a:"Restaurante mexicano · reel",ae:"Mexican restaurant · reel",r:["edit"]},
+ {n:"b-dc03",id:"0PP-zBszokE",d:"2026-11-16",t:"Don Chinga",a:"Restaurante mexicano · reel",ae:"Mexican restaurant · reel",r:["edit"]},
+ {n:"b-esc",clip:1,ig:"DRS8K0mkZkB",vis:"142",d:"2025-11-20",t:"Dr. Escorcia",a:"Cirugía estética · lipopapada",ae:"Cosmetic surgery · chin lipo",r:["edit"]},
+ {n:"b-gis",clip:1,ig:"DQVJCvwksBN",vis:"84",d:"2025-10-28",t:"Gisela Mejía",a:"Bienes raíces · Proyecto Serenia",ae:"Real estate · Serenia project",r:["edit"]},
+ {n:"b-rev",clip:1,ig:"DQDHj1ngBWg",vis:"43",d:"2025-10-20",t:"Re-Evolution",a:"Health & wellness · pilates",r:["edit"]}
 ];
 
-const MES=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
-const fmt=d=>{const [y,m]=d.split("-");return `${MES[+m-1]} ${y}`;};
-const RL={dir:"Dirección",edit:"Edición",vfx:"VFX",color:"Color",mon:"Montaje",cam:"Segunda cámara",motion:"Motion graphics",ia:"Edición con IA"};
+/* textos de la interfaz */
+const T = {
+ es:{title:"Pato Productions — Edición y dirección",back:"← Volver al inicio",d1c:"Dirección · edición · VFX",d1t:"Videos <em>musicales</em>",d2c:"Edición para creadores",d3c:"Reels · campañas",d3t:"Em<em>presas</em>",d4c:"Fan edits · anime · series",d4t:"Proyectos <em>propios</em>",
+  fall:"Todo",fdir:"Dirección",fedit:"Edición",fmon:"Montaje",sbest:"Selección",snew:"Recientes",work:"Trabajemos <em>juntos</em>",mail:"Correo",
+  ig:"Ver en Instagram",ytx:"Ver en YouTube",play:"Reproducir",views:v=>v+" mil vistas",igviews:"vistas en Instagram",close:"Cerrar ✕",
+  mes:["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"],
+  rl:{dir:"Dirección",edit:"Edición",vfx:"VFX",color:"Color",mon:"Montaje",cam:"Segunda cámara",motion:"Motion graphics",ia:"Edición con IA"},
+  txt:{hall:["Edición <em>&amp;</em> dirección","Escoge qué quieres ver."],
+   musica:["Videos <em>musicales</em>","Dirección, edición, efectos visuales y color para la música urbana."],
+   youtube:["Edición para <em>YouTube</em>","Edición, motion graphics, shorts, vlogs y detrás de cámaras para creadores de contenido."],
+   propios:["Proyectos <em>propios</em>","Fan edits sobre anime, cine y series, hechos con material de terceros."],
+   empresas:["Contenido para <em>marcas</em>","Reels, campañas e institucional: no solo mostrar el producto, sino que el público quiera ser parte de la marca."]}},
+ en:{title:"Pato Productions — Video Editor & Director",back:"← Back to start",d1c:"Direction · editing · VFX",d1t:"Music <em>videos</em>",d2c:"Editing for creators",d3c:"Reels · campaigns",d3t:"<em>Brands</em>",d4c:"Fan edits · anime · series",d4t:"Personal <em>projects</em>",
+  fall:"All",fdir:"Direction",fedit:"Editing",fmon:"Assembly",sbest:"Selected",snew:"Recent",work:"Let’s work <em>together</em>",mail:"Email",
+  ig:"View on Instagram",ytx:"Watch on YouTube",play:"Play",views:v=>v+"K views",igviews:"Instagram views",close:"Close ✕",
+  mes:["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"],
+  rl:{dir:"Direction",edit:"Editing",vfx:"VFX",color:"Color",mon:"Assembly",cam:"Second camera",motion:"Motion graphics",ia:"AI editing"},
+  txt:{hall:["Editing <em>&amp;</em> direction","Choose what you want to see."],
+   musica:["Music <em>videos</em>","Direction, editing, visual effects and color for urban music."],
+   youtube:["Editing for <em>YouTube</em>","Editing, motion graphics, shorts, vlogs and behind-the-scenes for content creators."],
+   propios:["Personal <em>projects</em>","Fan edits of anime, film and TV, made with third-party footage."],
+   empresas:["Content for <em>brands</em>","Reels, campaigns and corporate videos: not just showing the product, but making the audience want to be part of the brand."]}}
+};
+
+/* idioma: ?lang=en|es en el link > elección guardada > idioma del navegador */
+let L=(()=>{const q=new URLSearchParams(location.search).get("lang");if(q==="en"||q==="es")return q;
+  try{const s=localStorage.getItem("lang");if(s==="en"||s==="es")return s;}catch(e){}
+  return (navigator.language||"es").toLowerCase().startsWith("es")?"es":"en";})();
+
+const fmt=d=>{const [y,m]=d.split("-");return `${T[L].mes[+m-1]} ${y}`;};
 const card=(p,url,where,media)=>`<article data-ext="${p.ext?1:""}" class="piece${p.feat?" feature":""}${p.yt?" yt":""}" data-r="${p.r.join(" ")}" data-d="${p.d}">
     ${url?`<a class="screen" href="${url}" target="_blank" rel="noopener" aria-label="${p.t}, ${where}">${media}<span class="open">${where} ↗</span></a>`:`<div class="screen">${media}</div>`}
     <div class="meta">
       <h2>${p.t}</h2><span class="date">${fmt(p.d)}</span>
-      <p class="artist">${p.a}</p>
-      <ul class="roles">${p.r.map(r=>`<li class="${r}">${RL[r]}</li>`).join("")}</ul>
+      <p class="artist">${L==="en"&&p.ae?p.ae:p.a}</p>
+      <ul class="roles">${p.r.map(r=>`<li class="${r}">${T[L].rl[r]}</li>`).join("")}</ul>
     </div>
   </article>`;
 const render=list=>list.filter(p=>!p.noclip||p.id).map(p=>{
+  const t=T[L];
   const url=p.id?"https://www.youtube.com/watch?v="+p.id:(p.v||(p.ig?"https://www.instagram.com/p/"+p.ig+"/":""));
-  const where=p.ig&&!p.id?"Ver en Instagram":p.ext?"Ver en YouTube":"Reproducir";
-  if(p.vis&&p.clip) return card(p,url,where,`<video src="clips/${p.n}.mp4" poster="clips/${p.n}.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video><span class="views">${p.vis} vistas</span>`);
-  if(p.vis) return card(p,url,where,`<div class="stat"><b>${p.vis}</b><small>vistas en Instagram</small></div>`);
-  const thumb=p.id?`<img src="https://i.ytimg.com/vi/${p.id}/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/${p.id}/hqdefault.jpg'" alt="" loading="lazy">`:"";
+  const where=p.ig&&!p.id?t.ig:p.ext?t.ytx:t.play;
+  if(p.vis&&p.clip) return card(p,url,where,`<video src="clips/${p.n}.mp4" poster="clips/${p.n}.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video><span class="views">${t.views(p.vis)}</span>`);
+  if(p.vis) return card(p,url,where,`<div class="stat"><b>${L==="en"?p.vis+"K":p.vis+" mil"}</b><small>${t.igviews}</small></div>`);
+  const thumb=p.id?`<img src="https://i.ytimg.com/vi/${p.id}/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${p.id}/hqdefault.jpg'" alt="" loading="lazy">`:"";
   if(p.yt&&p.id) return card(p,url,where,thumb+(p.noclip?"":`<video class="hov" src="clips/${p.n}.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>`));
   const media=p.noclip?`<img src="https://i.ytimg.com/vi/${p.id}/hqdefault.jpg" alt="" loading="lazy">`
     :`<video src="clips/${p.n}.mp4" poster="clips/${p.n}.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>`;
   return card(p,url,where,media);}).join("");
-document.getElementById("grid").innerHTML=render(P);
-document.getElementById("grid-yt").innerHTML=render(Y);
-document.getElementById("grid-ys").innerHTML=render(YS);
-document.getElementById("grid-edits").innerHTML=render(E);
-document.getElementById("grid-bh").innerHTML=render(BH);
-document.getElementById("grid-b").innerHTML=render(B);
-document.querySelectorAll(".grid").forEach(g=>[...g.children].forEach((el,i)=>{el.dataset.i=i;}));
+
+/* solo se reproducen los loops visibles, para que la página no pese */
+const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){const pr=v.play();if(pr)pr.catch(()=>{});}else v.pause();}),{threshold:.25});
+document.querySelectorAll(".door video").forEach(v=>io.observe(v));
+
+const GRIDS=[["grid",P],["grid-yt",Y],["grid-ys",YS],["grid-edits",E],["grid-bh",BH],["grid-b",B]];
+const renderAll=()=>{
+  GRIDS.forEach(([id,list])=>{const g=document.getElementById(id);g.querySelectorAll("video").forEach(v=>io.unobserve(v));g.innerHTML=render(list);});
+  document.querySelectorAll(".grid").forEach(g=>[...g.children].forEach((el,i)=>{el.dataset.i=i;}));
+  document.querySelectorAll(".screen video:not(.hov)").forEach(v=>io.observe(v));
+  document.querySelectorAll("a.screen").forEach(a=>{const v=a.querySelector("video.hov");if(!v)return;
+    a.addEventListener("mouseenter",()=>{const pr=v.play();if(pr)pr.catch(()=>{});});
+    a.addEventListener("mouseleave",()=>{v.pause();});});
+  document.querySelectorAll("[data-f]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.f==="all"));
+  document.querySelectorAll("[data-s]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.s==="best"));
+};
 
 document.querySelectorAll("[data-f]").forEach(b=>b.addEventListener("click",()=>{
   document.querySelectorAll("[data-f]").forEach(x=>x.setAttribute("aria-pressed",x===b));
@@ -310,27 +366,27 @@ document.querySelectorAll("[data-s]").forEach(b=>b.addEventListener("click",()=>
   });
 }));
 
-/* antesala: #musica o #youtube; sin hash se muestra la puerta de entrada */
-const TXT={hall:["Edición <em>&amp;</em> dirección","Escoge qué quieres ver."],
-  musica:["Videos <em>musicales</em>","Dirección, edición, efectos visuales y color para la música urbana."],
-  youtube:["Edición para <em>YouTube</em>","Edición, motion graphics, vlogs y detrás de cámaras para creadores de contenido."],
-  propios:["Proyectos <em>propios</em>","Fan edits sobre anime, cine y series, hechos con material de terceros."],
-  empresas:["Contenido para <em>marcas</em>","Reels, campañas e institucional: no solo mostrar el producto, sino que el público quiera ser parte de la marca."]};
+/* antesala: #musica, #youtube, #empresas o #propios; sin hash se muestra la puerta de entrada */
+const view=()=>["#musica","#youtube","#empresas","#propios"].includes(location.hash)?location.hash.slice(1):"hall";
+const heads=()=>{const v=view();document.getElementById("h1").innerHTML=T[L].txt[v][0];document.getElementById("disc").textContent=T[L].txt[v][1];};
 const route=()=>{
-  const v=["#musica","#youtube","#empresas","#propios"].includes(location.hash)?location.hash.slice(1):"hall";
+  const v=view();
   document.querySelectorAll("[data-view]").forEach(el=>{el.hidden=el.dataset.view!==v;});
-  document.getElementById("h1").innerHTML=TXT[v][0];document.getElementById("disc").textContent=TXT[v][1];
+  heads();
   document.querySelector(".back").hidden=v==="hall";
   scrollTo(0,0);
 };
-addEventListener("hashchange",route);route();
 
-/* solo se reproducen los loops visibles, para que la página no pese */
-const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){const pr=v.play();if(pr)pr.catch(()=>{});}else v.pause();}),{threshold:.25});
-document.querySelectorAll(".screen video:not(.hov),.door video").forEach(v=>io.observe(v));
-document.querySelectorAll("a.screen").forEach(a=>{const v=a.querySelector("video.hov");if(!v)return;
-  a.addEventListener("mouseenter",()=>{const pr=v.play();if(pr)pr.catch(()=>{});});
-  a.addEventListener("mouseleave",()=>{v.pause();});});
+const setLang=l=>{
+  L=l;document.documentElement.lang=l;document.title=T[l].title;
+  document.querySelectorAll("[data-i]").forEach(el=>{el.innerHTML=T[l][el.dataset.i];});
+  document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===l));
+  lb.querySelector(".lb-close").textContent=T[l].close;
+  try{localStorage.setItem("lang",l);}catch(e){}
+  const u=new URL(location.href);u.searchParams.set("lang",l);history.replaceState(null,"",u);
+  renderAll();heads();
+};
+document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
 
 const lb=document.createElement("div");lb.className="lb";lb.hidden=true;
 lb.innerHTML='<button class="lb-close" type="button">Cerrar ✕</button><div class="lb-box"></div>';
@@ -343,10 +399,15 @@ document.addEventListener("click",e=>{
   if(a.closest("article").dataset.ext)return;
   const m=a.href.match(/watch\?v=([\w-]+)/);const local=/\.mp4$/.test(a.getAttribute("href"));if(!m&&!local)return;
   e.preventDefault();
-  lb.querySelector(".lb-box").innerHTML=m?`<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Video"></iframe>`
+  const box=lb.querySelector(".lb-box");
+  box.classList.toggle("v",!!a.closest(".vert"));
+  box.innerHTML=m?`<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Video"></iframe>`
     :`<video src="${a.getAttribute("href")}" controls autoplay playsinline></video>`;
   lb.hidden=false;
 });
+
+addEventListener("hashchange",route);
+setLang(L);route();
 </script>
 
 </body>
